@@ -5,6 +5,7 @@ import React, { useEffect } from 'react';
 import { Button, Typography } from '@/components';
 import Image from 'next/image';
 
+import { Input } from '@/components/input/input';
 import styles from './page.module.scss';
 
 export default function Home() {
@@ -36,6 +37,7 @@ export default function Home() {
       </div>
       <Button buttonType='none'>button</Button>
       <Button buttonType='bordered'>button</Button>
+      <Input placeholder='Input' />
       <Typography tag='p'>P tag</Typography>
       <Typography tag='span'>span tag</Typography>
       <Typography tag='h1' color='primary'>

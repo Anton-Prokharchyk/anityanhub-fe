@@ -2,9 +2,7 @@
 
 .btn {
   display: inline-block;
-
   padding: 12px 24px;
-
   border: 0;
   border-radius: 5px;
   cursor: pointer;
@@ -14,16 +12,18 @@
   color: palette.$typography-primary-color;
   background-color: palette.$bg-accent-color;
 }
+
 .dark {
   color: palette.$typography-primary-color;
   background-color: palette.$bg-primary-color;
 }
+
 .bordered {
   border: 2px solid palette.$bg-accent-color;
-
   color: palette.$typography-primary-color;
   background-color: palette.$bg-secondary-color;
 }
+
 .none {
   color: palette.$typography-primary-color;
   background-color: unset;

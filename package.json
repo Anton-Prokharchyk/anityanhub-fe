@@ -6,7 +6,7 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint . --cache --fix && stylelint \"**/*.{css,scss}\"",
+    "lint": "eslint . --cache --fix && stylelint --fix \"**/*.{css,scss}\"",
     "test": "echo \"running tests\"",
     "prepare": "husky install"
   },
