@@ -1,0 +1,24 @@
+@use '@/app/variables.scss' as palette;
+
+.primary {
+  color: palette.$typography-primary-color;
+}
+.accent {
+  color: palette.$typography-secondary-color;
+}
+.error {
+  color: palette.$typography-error-color;
+}
+.disabled {
+  color: palette.$typography-disabled-color;
+}
+
+.normal {
+  font-weight: normal;
+}
+.bold {
+  font-weight: bold;
+}
+.light {
+  font-weight: lighter;
+}

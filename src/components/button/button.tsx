@@ -10,16 +10,14 @@ export function Button({
   buttonType = 'primary',
   ...props
 }: ButtonProps): React.ReactElement {
+  const classes = cn(styles.btn, {
+    [styles.primary]: buttonType === 'primary',
+    [styles.dark]: buttonType === 'dark',
+    [styles.bordered]: buttonType === 'bordered',
+    [styles.none]: buttonType === 'none',
+  });
   return (
-    <button
-      className={cn(styles.btn, {
-        [styles.primary]: buttonType === 'primary',
-        [styles.dark]: buttonType === 'dark',
-        [styles.lined]: buttonType === 'bordered',
-        [styles.none]: buttonType === 'none',
-      })}
-      {...props}
-    >
+    <button className={classes} {...props}>
       {children}
     </button>
   );
