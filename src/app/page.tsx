@@ -2,7 +2,7 @@
 
 import React, { useEffect } from 'react';
 
-import { Button, Typography } from '@/components';
+import { Button, SearchBar, Typography } from '@/components';
 import Image from 'next/image';
 
 import { Input } from '@/components/input/input';
@@ -37,7 +37,7 @@ export default function Home() {
       </div>
       <Button buttonType='none'>button</Button>
       <Button buttonType='bordered'>button</Button>
-      <Input placeholder='Input' />
+      <Input placeholder='Enter name' />
       <Typography tag='p'>P tag</Typography>
       <Typography tag='span'>span tag</Typography>
       <Typography tag='h1' color='primary'>
@@ -54,6 +54,7 @@ export default function Home() {
       </Typography>
       <Typography tag='h5'>h5 tag</Typography>
       <Typography tag='h6'>h6 tag</Typography>
+      <SearchBar placeholder='Search' />
     </main>
   );
 }
