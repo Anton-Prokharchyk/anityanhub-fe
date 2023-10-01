@@ -1,20 +1,19 @@
-@use '@/app/variables.scss' as palette;
+@use '@/app/variables' as palette;
 
-.input {
+.text-area {
   display: block;
   padding: 20px;
   border: 2px solid palette.$typography-disabled-color;
   border-radius: 5px;
-  background-color: palette.$bg-primary-color;
   color: palette.$typography-disabled-color;
 
   &::placeholder {
-    color: palette.$typography-disabled-color;
+    color: palette.$typography-primary-color;
   }
 
   &:focus {
     color: palette.$typography-primary-color;
-    border-color: palette.$typography-primary-color;
+    border-color: palette.$bg-accent-color;
     outline: none;
   }
 }

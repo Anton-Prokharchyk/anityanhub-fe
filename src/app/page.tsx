@@ -2,7 +2,7 @@
 
 import React, { useEffect } from 'react';
 
-import { Button, SearchBar, Typography } from '@/components';
+import { Button, SearchBar, TextArea, Typography } from '@/components';
 import Image from 'next/image';
 
 import { Input } from '@/components/input/input';
@@ -38,6 +38,7 @@ export default function Home() {
       <Button buttonType='none'>button</Button>
       <Button buttonType='bordered'>button</Button>
       <Input placeholder='Enter name' />
+      <TextArea placeholder='Write a comment ...' />
       <Typography tag='p'>P tag</Typography>
       <Typography tag='span'>span tag</Typography>
       <Typography tag='h1' color='primary'>

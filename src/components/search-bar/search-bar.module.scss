@@ -19,6 +19,7 @@
   &:focus {
     color: palette.$typography-primary-color;
     border-color: palette.$typography-primary-color;
+    outline: none;
   }
 }
 
