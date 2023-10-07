@@ -14,10 +14,10 @@ interface Anime {
 }
 
 export default function Home() {
-  const [animes, setAnimes] = useState([]);
+  const [animes, setAnimes] = useState<Anime[] | []>([]);
   useEffect(() => {
     for (let i = 0; i < 15; i += 1) {
-      setAnimes((prevState: Anime[]) => [
+      setAnimes((prevState): Anime[] => [
         ...prevState,
         { id: i, title: 'Your name' },
       ]);
