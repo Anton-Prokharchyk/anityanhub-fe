@@ -1,18 +1,30 @@
 'use client';
 
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 
-import { Button, SearchBar, TextArea, Typography } from '@/components';
+import { Button, SearchBar, Slider, TextArea, Typography } from '@/components';
 import Image from 'next/image';
 
 import { Input } from '@/components/input/input';
 import styles from './page.module.scss';
 
+interface Anime {
+  id: number;
+  title: string;
+}
+
 export default function Home() {
+  const [animes, setAnimes] = useState([]);
   useEffect(() => {
+    for (let i = 0; i < 15; i += 1) {
+      setAnimes((prevState: Anime[]) => [
+        ...prevState,
+        { id: i, title: 'Your name' },
+      ]);
+    }
     console.log('rerender');
     return () => console.log('unmount');
-  });
+  }, []);
 
   return (
     <main className={styles.main}>
@@ -56,6 +68,28 @@ export default function Home() {
       <Typography tag='h5'>h5 tag</Typography>
       <Typography tag='h6'>h6 tag</Typography>
       <SearchBar placeholder='Search' />
+      <Slider>
+        {animes.map((anime: Anime) => (
+          <div
+            key={anime.id}
+            className='slider-card'
+            style={{ minWidth: 100, height: 100, backgroundColor: 'red' }}
+          >
+            {anime.title}
+          </div>
+        ))}
+      </Slider>
+      <Slider>
+        {animes.map((anime: Anime) => (
+          <div
+            key={anime.id}
+            className='slider-card'
+            style={{ minWidth: 100, height: 100, backgroundColor: 'red' }}
+          >
+            {anime.title}
+          </div>
+        ))}
+      </Slider>
     </main>
   );
 }

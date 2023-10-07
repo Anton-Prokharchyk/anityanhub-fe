@@ -8,7 +8,7 @@
   color: palette.$typography-disabled-color;
 
   &::placeholder {
-    color: palette.$typography-primary-color;
+    color: palette.$typography-primary-color; // TODO: change color to disabled
   }
 
   &:focus {
