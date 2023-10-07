@@ -12,14 +12,10 @@ export function SearchBar({
 }: SearchBarProps): React.ReactElement {
   const classes = cn(styles.input);
 
-  const searchBarFocusEventHandler = (
-    e: React.FocusEvent<HTMLDivElement, HTMLDivElement>
-  ) => {
+  const searchBarFocusEventHandler = (e: React.FocusEvent<HTMLDivElement>) => {
     e.currentTarget.children[1].classList.add(styles.focused);
   };
-  const searchBarOnBlurEventHandler = (
-    e: React.FocusEvent<HTMLDivElement, HTMLDivElement>
-  ) => {
+  const searchBarOnBlurEventHandler = (e: React.FocusEvent<HTMLDivElement>) => {
     e.currentTarget.children[1].classList.remove(styles.focused);
   };
   return (
