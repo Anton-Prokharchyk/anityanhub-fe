@@ -84,7 +84,7 @@ export default function Home() {
           <div
             key={anime.id}
             className='slider-card'
-            style={{ minWidth: 100, height: 100, backgroundColor: 'red' }}
+            style={{ minWidth: 200, height: 200, backgroundColor: 'red' }}
           >
             {anime.title}
           </div>
