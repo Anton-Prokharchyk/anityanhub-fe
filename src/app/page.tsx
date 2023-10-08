@@ -16,7 +16,7 @@ interface Anime {
 export default function Home() {
   const [animes, setAnimes] = useState<Anime[] | []>([]);
   useEffect(() => {
-    for (let i = 0; i < 15; i += 1) {
+    for (let i = 0; i < 25; i += 1) {
       setAnimes((prevState): Anime[] => [
         ...prevState,
         { id: i, title: 'Your name' },

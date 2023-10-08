@@ -2,6 +2,8 @@ import React, { KeyboardEvent, MouseEvent } from 'react';
 
 import { SliderProps } from '@/components/slider/slider.proptypes';
 import onKeyDown from '@/components/slider/onKeyDownHandler';
+import calcNextScrollShift from '@/components/slider/calcNextButtonShift';
+import calcPrevScrollShift from '@/components/slider/calcPrevButtonShift';
 
 import styles from './slider.module.scss';
 
@@ -13,7 +15,9 @@ export function Slider({ children, ...props }: SliderProps) {
   ) => {
     const sliderItemsContainer = e.currentTarget.previousElementSibling
       ?.firstChild as HTMLDivElement;
-    if (sliderItemsContainer.style) sliderItemsContainer.style.left = '-300px';
+    const nextShift = calcNextScrollShift(sliderItemsContainer);
+    if (sliderItemsContainer.style)
+      sliderItemsContainer.style.left = `${nextShift}px`;
   };
 
   const onPrevButtonSliderClickHandler = (
@@ -23,7 +27,9 @@ export function Slider({ children, ...props }: SliderProps) {
   ) => {
     const sliderItemsContainer = e.currentTarget.nextElementSibling
       ?.firstChild as HTMLDivElement;
-    if (sliderItemsContainer.style) sliderItemsContainer.style.left = '0px';
+    const nextShift = calcPrevScrollShift(sliderItemsContainer);
+    if (sliderItemsContainer.style)
+      sliderItemsContainer.style.left = `${nextShift}px`;
   };
 
   return (
