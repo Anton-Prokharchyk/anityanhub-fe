@@ -1,53 +1,63 @@
-import React, {
-  FunctionComponentElement,
-  HTMLAttributes,
-  MouseEvent,
-  ReactElement,
-  ReactNode,
-} from 'react';
-import cn from 'classnames';
+import React, { KeyboardEvent, MouseEvent } from 'react';
 
 import { SliderProps } from '@/components/slider/slider.proptypes';
+import onKeyDown from '@/components/slider/onKeyDownHandler';
 
 import styles from './slider.module.scss';
 
-export function Slider({
-  children,
-  ...props
-}: SliderProps): FunctionComponentElement<ReactElement> {
-  const onNextButtonSliderClickHandler = (e: MouseEvent<HTMLDivElement>) => {
-    const a = e.currentTarget.children[1]
-      .children[0] as HTMLAttributes<ReactNode>;
-    if (a.style) a.style.left = '-300px';
+export function Slider({ children, ...props }: SliderProps) {
+  const onNextButtonSliderClickHandler = (
+    e:
+      | MouseEvent<HTMLDivElement | Element>
+      | KeyboardEvent<HTMLDivElement | Element>
+  ) => {
+    const sliderItemsContainer = e.currentTarget.previousElementSibling
+      ?.firstChild as HTMLDivElement;
+    if (sliderItemsContainer.style) sliderItemsContainer.style.left = '-300px';
   };
 
-  const onPrevButtonSliderClickHandler = (e: MouseEvent<HTMLDivElement>) => {
-    const a = e.currentTarget.children[1]
-      .children[0] as HTMLAttributes<ReactNode>;
-    if (a.style) a.style.left = '0px';
-  };
-
-  const sliderClickHandler = (e: MouseEvent<HTMLDivElement>) => {
-    const firstEventTarget = e.target as HTMLDivElement;
-    let classesArray: Array<string> = [];
-    if (firstEventTarget.className)
-      classesArray = classesArray.concat(firstEventTarget.className.split(' '));
-    if (classesArray.includes('next-button')) onNextButtonSliderClickHandler(e);
-    if (classesArray.includes('prev-button')) onPrevButtonSliderClickHandler(e);
+  const onPrevButtonSliderClickHandler = (
+    e:
+      | MouseEvent<HTMLDivElement | Element>
+      | KeyboardEvent<HTMLDivElement | Element>
+  ) => {
+    const sliderItemsContainer = e.currentTarget.nextElementSibling
+      ?.firstChild as HTMLDivElement;
+    if (sliderItemsContainer.style) sliderItemsContainer.style.left = '0px';
   };
 
   return (
-    <div className={styles.slider} onClick={sliderClickHandler} {...props}>
-      <div className={cn(styles['prev-button'], 'prev-button')}>
-        <div className={cn(styles['button-right'], 'prev-button')} />
-        <div className={cn(styles['button-left'], 'prev-button')} />
+    <div className={styles.slider} {...props}>
+      <div
+        role='button'
+        tabIndex={0}
+        onClick={(e: MouseEvent<HTMLDivElement>) =>
+          onPrevButtonSliderClickHandler(e)
+        }
+        onKeyDown={(e: KeyboardEvent<HTMLDivElement>) =>
+          onKeyDown(e, onPrevButtonSliderClickHandler)
+        }
+        className={styles['prev-button']}
+      >
+        <div className={styles['button-right']} />
+        <div className={styles['button-left']} />
       </div>
       <div className={styles['slider-items-wrapper']}>
         <div className={styles['slider-items-container']}>{children}</div>
       </div>
-      <div className={cn(styles['next-button'], 'next-button')}>
-        <div className={cn(styles['button-right'], 'next-button')} />
-        <div className={cn(styles['button-left'], 'next-button')} />
+      <div
+        role='button'
+        tabIndex={0}
+        onClick={(e: MouseEvent<HTMLDivElement>) =>
+          onNextButtonSliderClickHandler(e)
+        }
+        onKeyDown={(e: KeyboardEvent<HTMLDivElement>) => {
+          onKeyDown(e, onNextButtonSliderClickHandler);
+        }}
+        className={styles['next-button']}
+      >
+        <div className={styles['button-right']} />
+        <div className={styles['button-left']} />
       </div>
     </div>
   );
