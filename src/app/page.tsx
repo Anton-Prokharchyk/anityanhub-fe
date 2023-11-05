@@ -14,10 +14,10 @@ interface Anime {
 }
 
 export default function Home() {
-  const [animes, setAnimes] = useState<Anime[] | []>([]);
+  const [animeCollection, setAnimeCollection] = useState<Anime[] | []>([]);
   useEffect(() => {
     for (let i = 0; i < 25; i += 1) {
-      setAnimes((prevState): Anime[] => [
+      setAnimeCollection((prevState): Anime[] => [
         ...prevState,
         { id: i, title: 'Your name' },
       ]);
@@ -68,25 +68,25 @@ export default function Home() {
       <Typography tag='h5'>h5 tag</Typography>
       <Typography tag='h6'>h6 tag</Typography>
       <SearchBar placeholder='Search' />
-      <Slider>
-        {animes.map((anime: Anime) => (
+      <Slider type='full-width'>
+        {animeCollection.map((animeItem: Anime) => (
           <div
-            key={anime.id}
+            key={animeItem.id}
             className='slider-card'
             style={{ minWidth: 100, height: 100, backgroundColor: 'red' }}
           >
-            {anime.title}
+            {animeItem.title}
           </div>
         ))}
       </Slider>
-      <Slider>
-        {animes.map((anime: Anime) => (
+      <Slider type='mini'>
+        {animeCollection.map((animeItem: Anime) => (
           <div
-            key={anime.id}
+            key={animeItem.id}
             className='slider-card'
             style={{ minWidth: 200, height: 200, backgroundColor: 'red' }}
           >
-            {anime.title}
+            {animeItem.title}
           </div>
         ))}
       </Slider>

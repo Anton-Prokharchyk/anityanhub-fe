@@ -36,11 +36,11 @@
         "plugin:prettier/recommended"
     ],
     "rules": {
-        "react/jsx-filename-extension": "off",
-        "react/jsx-props-no-spreading": "off",
-        "import/prefer-default-export": "off",
+        "react/jsx-filename-extension": "warn",
+        "react/jsx-props-no-spreading": "warn",
+        "import/prefer-default-export": "warn",
         "import/no-extraneous-dependencies":  ["error", {"devDependencies": true}],
-        "react/button-has-type": "off",
+        "react/button-has-type": "warn",
         "jsx-a11y/click-events-have-key-events": "warn",
         "jsx-a11y/no-static-element-interactions": "warn"
 

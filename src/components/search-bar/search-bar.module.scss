@@ -12,6 +12,7 @@
   background-color: palette.$bg-primary-color;
   width: 100%;
   color: palette.$typography-disabled-color;
+
   &::placeholder {
     color: palette.$typography-disabled-color;
   }
@@ -29,6 +30,7 @@
   left: 80%;
   fill: palette.$typography-disabled-color;
 }
+
 .focused {
   fill: palette.$typography-primary-color;
 }

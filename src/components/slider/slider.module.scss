@@ -1,17 +1,70 @@
 @use '@/app/variables.scss' as palette;
 
-.slider {
+.full-width.slider {
   display: flex;
   align-items: center;
-
   width: 100%;
-
   column-gap: 50px;
   padding: 12px 24px;
   border: 0;
 }
 
-.slider-items-wrapper {
+.full-width .prev-button {
+  position: relative;
+  min-width: 19px;
+  height: 100px;
+  cursor: pointer;
+
+  .button-right {
+    position: absolute;
+    top: 20px;
+    left: 7px;
+    width: 5px;
+    height: 30px;
+    background-color: palette.$bg-accent-color;
+    transform: rotate(30deg);
+  }
+
+  .button-left {
+    position: absolute;
+    top: 43px;
+    left: 7px;
+    width: 5px;
+    height: 30px;
+    background-color: palette.$bg-accent-color;
+    transform: rotate(-30deg);
+  }
+}
+
+.full-width .next-button {
+  position: relative;
+  margin-left: auto;
+  min-width: 19px;
+  height: 100px;
+  cursor: pointer;
+
+  .button-right {
+    position: absolute;
+    top: 20px;
+    left: 7px;
+    width: 5px;
+    height: 30px;
+    background-color: palette.$bg-accent-color;
+    transform: rotate(-30deg);
+  }
+
+  .button-left {
+    position: absolute;
+    top: 43px;
+    left: 7px;
+    width: 5px;
+    height: 30px;
+    background-color: palette.$bg-accent-color;
+    transform: rotate(30deg);
+  }
+}
+
+.full-width .slider-items-wrapper {
   overflow: hidden;
 
   .slider-items-container {
@@ -19,35 +72,63 @@
     position: relative;
     align-items: center;
     width: 100%;
-
     top: 0;
     left: 0;
-
     column-gap: 20px;
-
     transition: all 2s ease-out;
   }
 }
 
-.next-button {
+.mini.slider {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  column-gap: 50px;
+  padding: 12px 24px;
+  border: 0;
+}
+
+.mini .prev-button {
+  position: relative;
+  min-width: 19px;
+  height: 100px;
+  cursor: pointer;
+
+  .button-right {
+    position: absolute;
+    top: 20px;
+    left: 7px;
+    width: 5px;
+    height: 30px;
+    background-color: palette.$bg-accent-color;
+    transform: rotate(30deg);
+  }
+
+  .button-left {
+    position: absolute;
+    top: 43px;
+    left: 7px;
+    width: 5px;
+    height: 30px;
+    background-color: palette.$bg-accent-color;
+    transform: rotate(-30deg);
+  }
+}
+
+.mini .next-button {
   position: relative;
   margin-left: auto;
-
   min-width: 19px;
   height: 100px;
-
   cursor: pointer;
 
   .button-right {
     position: absolute;
     top: 20px;
     left: 7px;
-
     width: 5px;
     height: 30px;
-
     background-color: palette.$bg-accent-color;
-
     transform: rotate(-30deg);
   }
 
@@ -55,68 +136,24 @@
     position: absolute;
     top: 43px;
     left: 7px;
-
     width: 5px;
     height: 30px;
-
     background-color: palette.$bg-accent-color;
-
     transform: rotate(30deg);
   }
 }
 
-.prev-button {
-  position: relative;
+.mini .slider-items-wrapper {
+  overflow: hidden;
 
-  min-width: 19px;
-  height: 100px;
-
-  cursor: pointer;
-
-  .button-right {
-    position: absolute;
-    top: 20px;
-    left: 7px;
-
-    width: 5px;
-    height: 30px;
-
-    background-color: palette.$bg-accent-color;
-
-    transform: rotate(30deg);
+  .slider-items-container {
+    display: flex;
+    position: relative;
+    align-items: center;
+    width: 100%;
+    top: 0;
+    left: 0;
+    column-gap: 20px;
+    transition: all 2s ease-out;
   }
-
-  .button-left {
-    position: absolute;
-    top: 43px;
-    left: 7px;
-
-    width: 5px;
-    height: 30px;
-
-    background-color: palette.$bg-accent-color;
-
-    transform: rotate(-30deg);
-  }
-}
-
-.primary {
-  color: palette.$typography-primary-color;
-  background-color: palette.$bg-accent-color;
-}
-
-.dark {
-  color: palette.$typography-primary-color;
-  background-color: palette.$bg-primary-color;
-}
-
-.bordered {
-  border: 2px solid palette.$bg-accent-color;
-  color: palette.$typography-primary-color;
-  background-color: palette.$bg-secondary-color;
-}
-
-.none {
-  color: palette.$typography-primary-color;
-  background-color: unset;
 }

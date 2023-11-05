@@ -1,4 +1,5 @@
 import React, { KeyboardEvent, MouseEvent } from 'react';
+import cn from 'classnames';
 
 import { SliderProps } from '@/components/slider/slider.proptypes';
 import onKeyDown from '@/components/slider/onKeyDownHandler';
@@ -7,7 +8,7 @@ import calcPrevScrollShift from '@/components/slider/calcPrevButtonShift';
 
 import styles from './slider.module.scss';
 
-export function Slider({ children, ...props }: SliderProps) {
+export default function Slider({ children, type, ...props }: SliderProps) {
   const onNextButtonSliderClickHandler = (
     e:
       | MouseEvent<HTMLDivElement | Element>
@@ -33,7 +34,7 @@ export function Slider({ children, ...props }: SliderProps) {
   };
 
   return (
-    <div className={styles.slider} {...props}>
+    <div className={cn(styles.slider, styles[type])} {...props}>
       <div
         role='button'
         tabIndex={0}
