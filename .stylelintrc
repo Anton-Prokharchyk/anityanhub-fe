@@ -2,6 +2,9 @@
   "extends": [
     "stylelint-config-standard",
     "stylelint-config-sass-guidelines",
+    "stylelint-config-standard-scss",
+    "stylelint-order",
+    "stylelint-config-recess-order",
     "stylelint-prettier/recommended"
   ],
   "cache": true,

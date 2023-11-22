@@ -22,8 +22,6 @@ export default function Home() {
         { id: i, title: 'Your name' },
       ]);
     }
-    console.log('rerender');
-    return () => console.log('unmount');
   }, []);
 
   return (
@@ -73,18 +71,18 @@ export default function Home() {
           <div
             key={animeItem.id}
             className='slider-card'
-            style={{ minWidth: 100, height: 100, backgroundColor: 'red' }}
+            style={{ backgroundColor: 'red' }}
           >
             {animeItem.title}
           </div>
         ))}
       </Slider>
-      <Slider type='mini'>
+      <Slider width='300px' height='300px' type='mini'>
         {animeCollection.map((animeItem: Anime) => (
           <div
             key={animeItem.id}
             className='slider-card'
-            style={{ minWidth: 200, height: 200, backgroundColor: 'red' }}
+            style={{ backgroundColor: 'red', width: '50px' }}
           >
             {animeItem.title}
           </div>

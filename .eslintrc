@@ -1,61 +1,66 @@
 {
-    "root": true,
-    "env": {
-        "node": true,
-        "browser": true,
-        "es6": true
-    },
-    "plugins": [
-        "@typescript-eslint",
-        "import",
-        "prettier",
-        "jsx-a11y",
-        "react",
-        "react-hooks"
-    ],
-    "parser": "@typescript-eslint/parser",
-    "parserOptions": {
-        "project": "tsconfig.json",
-        "ecmaVersion": "latest",
-        "sourceType": "module",
-        "ecmaFeatures": {
-            "tsx": true
-        }
-    },
-    "extends": [
-        "next/core-web-vitals",
-        "airbnb",
-        "airbnb-typescript/base",
-        "airbnb/hooks",
-        "plugin:import/typescript",
-        "plugin:@typescript-eslint/recommended",
-        "plugin:@typescript-eslint/eslint-recommended",
-        "plugin:@typescript-eslint/recommended-requiring-type-checking",
-        "plugin:react/recommended",
-        "plugin:jsx-a11y/recommended",
-        "plugin:prettier/recommended"
-    ],
-    "rules": {
-        "react/jsx-filename-extension": "warn",
-        "react/jsx-props-no-spreading": "warn",
-        "import/prefer-default-export": "warn",
-        "import/no-extraneous-dependencies":  ["error", {"devDependencies": true}],
-        "react/button-has-type": "warn",
-        "jsx-a11y/click-events-have-key-events": "warn",
-        "jsx-a11y/no-static-element-interactions": "warn"
-
-
-    },
-    "settings": {
-        "import/resolver": {
-            "node": {
-                "extensions": [
-                    ".js",
-                    ".jsx",
-                    ".ts",
-                    ".tsx"
-                ]
-            }
-        }
+  "root": true,
+  "env": {
+    "node": true,
+    "browser": true,
+    "es6": true
+  },
+  "plugins": [
+    "@typescript-eslint",
+    "import",
+    "prettier",
+    "jsx-a11y",
+    "react",
+    "react-hooks"
+  ],
+  "parser": "@typescript-eslint/parser",
+  "parserOptions": {
+    "project": "tsconfig.json",
+    "ecmaVersion": "latest",
+    "sourceType": "module",
+    "ecmaFeatures": {
+      "tsx": true
     }
+  },
+  "extends": [
+    "next/core-web-vitals",
+    "airbnb",
+    "airbnb-typescript/base",
+    "airbnb/hooks",
+    "plugin:import/typescript",
+    "plugin:@typescript-eslint/recommended",
+    "plugin:@typescript-eslint/eslint-recommended",
+    "plugin:@typescript-eslint/recommended-requiring-type-checking",
+    "plugin:react/recommended",
+    "plugin:react-hooks/recommended",
+    "plugin:jsx-a11y/recommended",
+    "plugin:prettier/recommended"
+  ],
+  "rules": {
+    "react/jsx-filename-extension": "warn",
+    "react/jsx-props-no-spreading": "warn",
+    "import/prefer-default-export": "warn",
+    "import/no-extraneous-dependencies": [
+      "error",
+      {
+        "devDependencies": true
+      }
+    ],
+    "react/button-has-type": "warn",
+    "jsx-a11y/click-events-have-key-events": "warn",
+    "jsx-a11y/no-static-element-interactions": "warn",
+    "react/no-array-index-key": "warn"
+  },
+  "settings": {
+    "import/resolver": {
+      "node": {
+        "extensions": [
+          ".js",
+          ".jsx",
+          ".ts",
+          ".tsx"
+        ]
+      }
+    }
+  }
 }
