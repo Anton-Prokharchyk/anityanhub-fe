@@ -37,7 +37,7 @@
     "plugin:prettier/recommended"
   ],
   "rules": {
-    "react/jsx-filename-extension": "warn",
+    "react/jsx-filename-extension": [1, { "extensions": [".tsx", ".jsx"] }],
     "react/jsx-props-no-spreading": "warn",
     "import/prefer-default-export": "warn",
     "import/no-extraneous-dependencies": [
@@ -49,7 +49,8 @@
     "react/button-has-type": "warn",
     "jsx-a11y/click-events-have-key-events": "warn",
     "jsx-a11y/no-static-element-interactions": "warn",
-    "react/no-array-index-key": "warn"
+    "react/no-array-index-key": "warn",
+    "react/self-closing-comp": "off"
   },
   "settings": {
     "import/resolver": {

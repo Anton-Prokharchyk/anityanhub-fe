@@ -2,17 +2,20 @@ import React, {
   Children,
   KeyboardEvent,
   MouseEvent,
-  MutableRefObject,
+  useEffect,
   useRef,
+  useState,
 } from 'react';
 import cn from 'classnames';
 
 import { SliderProps } from '@/components/slider/slider.proptypes';
-import onKeyDown from '@/components/slider/onKeyDownHandler';
 import calcNextScrollShift from '@/components/slider/calcNextButtonShift';
 import calcPrevScrollShift from '@/components/slider/calcPrevButtonShift';
+import getNumberFromPixels from '@/components/slider/getNumberFromPixels';
 
 import styles from './slider.module.scss';
+
+const ENTER_KEY_NAME = 'Enter';
 
 export default function Slider({
   children,
@@ -22,50 +25,67 @@ export default function Slider({
   ...props
 }: SliderProps) {
   const childrenArray = Children.toArray(children);
-  const sliderItemsContainer: MutableRefObject<HTMLDivElement | null> =
-    useRef(null);
-
-  const onNextButtonSliderClickHandler = () => {
-    const nextShift = calcNextScrollShift(
-      sliderItemsContainer.current as HTMLDivElement
-    );
-    if (sliderItemsContainer.current?.style)
-      sliderItemsContainer.current.style.left = `${nextShift}px`;
+  const sliderItemsContainer = useRef<HTMLDivElement>(null);
+  const sliderDotsContainer = useRef<HTMLDivElement>(null);
+  const [currentSlideNumber, setCurrentSlideNumber] = useState<number>(0);
+  const changeCurrentSlide = () => {
+    const element = sliderItemsContainer.current;
+    if (element) {
+      element.style.left = `-${element.clientWidth * currentSlideNumber}px`;
+    }
   };
-
-  const onPrevButtonSliderClickHandler = () => {
-    const nextShift = calcPrevScrollShift(
-      sliderItemsContainer.current as HTMLDivElement
-    );
-    if (sliderItemsContainer.current?.style)
-      sliderItemsContainer.current.style.left = `${nextShift}px`;
+  const setActiveSliderDot = () => {
+    if (sliderDotsContainer.current) {
+      const dotsArray = Array.from(sliderDotsContainer.current?.children);
+      dotsArray.forEach((dot) => {
+        if (dot) {
+          dot.classList.forEach((className: string, index: number, array) => {
+            if (className.includes('active')) array.remove(className);
+          });
+        }
+      });
+      dotsArray.forEach((child) => {
+        if (+child.id === currentSlideNumber)
+          child.classList.add(styles.active);
+      });
+    }
   };
-
-  // const onDotClickHandler = (e) => {
-  //   console.log(e.currentTarget);
-  //   e.currentTarget.classList.add(styles.active);
-  // };
-
   const onDotClickHandler = (
     e:
       | MouseEvent<HTMLDivElement | Element>
       | KeyboardEvent<HTMLDivElement | Element>
   ) => {
-    const element = e.currentTarget as HTMLDivElement;
-    const childrenHTMLCollection = element.parentElement?.children;
-    if (childrenHTMLCollection) {
-      const dotsArray = Array.from(childrenHTMLCollection) as HTMLDivElement[];
-      dotsArray.forEach((dot) => {
-        dot.classList.forEach((className: string, index, array) => {
-          if (className.includes('active')) array.remove(className);
-        });
-      });
-    }
-    e.currentTarget.classList.add(styles.active);
+    const element = e.currentTarget;
+    setCurrentSlideNumber(+element.id);
+    setActiveSliderDot();
   };
-  // const sliderDots: ReactElement[] = childrenArray.map(() => (
-  //   <div onClick={(e) => onDotClickHandler(e)} className={styles.dot} />
-  // ));
+
+  const onSliderButtonClickHandler = (
+    e: MouseEvent<HTMLDivElement> | KeyboardEvent<HTMLDivElement>
+  ) => {
+    const { id } = e.currentTarget;
+    const element = sliderItemsContainer.current;
+    if (element) {
+      switch (id) {
+        case 'next-button':
+          element.style.left = `${calcNextScrollShift(element)}px`;
+          break;
+        case 'prev-button':
+          element.style.left = `${calcPrevScrollShift(element)}px`;
+          break;
+        default:
+          return;
+      }
+      setCurrentSlideNumber(
+        Math.abs(getNumberFromPixels(element.style.left) / element.clientWidth)
+      );
+    }
+  };
+
+  useEffect(() => {
+    setActiveSliderDot();
+    changeCurrentSlide();
+  }, [currentSlideNumber, changeCurrentSlide, setActiveSliderDot]);
 
   return (
     <div
@@ -76,9 +96,10 @@ export default function Slider({
       <div
         role='button'
         tabIndex={0}
-        onClick={() => onPrevButtonSliderClickHandler()}
+        id='prev-button'
+        onClick={(e) => onSliderButtonClickHandler(e)}
         onKeyDown={(e: KeyboardEvent<HTMLDivElement>) =>
-          onKeyDown(e, onPrevButtonSliderClickHandler)
+          e.key === ENTER_KEY_NAME && onSliderButtonClickHandler(e)
         }
         className={styles['prev-button']}
       >
@@ -95,24 +116,26 @@ export default function Slider({
               {slide}
             </div>
           ))}
-          <div className={styles['dots-container']}>
-            {childrenArray.map((value, index) => (
-              <div
-                key={index}
-                onClick={(e) => onDotClickHandler(e)}
-                className={styles.dot}
-              />
-            ))}
-          </div>
+        </div>
+        <div ref={sliderDotsContainer} className={styles['dots-container']}>
+          {childrenArray.map((value, index) => (
+            <div
+              key={index}
+              id={index.toString()}
+              onClick={(e) => onDotClickHandler(e)}
+              className={styles.dot}
+            />
+          ))}
         </div>
       </div>
       <div
         role='button'
         tabIndex={0}
-        onClick={() => onNextButtonSliderClickHandler()}
-        onKeyDown={(e: KeyboardEvent<HTMLDivElement>) => {
-          onKeyDown(e, onNextButtonSliderClickHandler);
-        }}
+        id='next-button'
+        onClick={(e) => onSliderButtonClickHandler(e)}
+        onKeyDown={(e: KeyboardEvent<HTMLDivElement>) =>
+          e.key === ENTER_KEY_NAME && onSliderButtonClickHandler(e)
+        }
         className={styles['next-button']}
       >
         <div className={styles['button-right']} />
