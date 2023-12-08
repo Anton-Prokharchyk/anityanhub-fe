@@ -1,0 +1,152 @@
+@use '@/app/variables.scss' as palette;
+
+.mini.slider {
+  display: flex;
+  column-gap: 50px;
+  align-items: center;
+  width: 100%;
+  padding: 12px 24px;
+  border: 0;
+}
+
+%shared-mini-buttons-css {
+  position: absolute;
+  left: 7px;
+  width: 5px;
+  height: 30px;
+  background-color: palette.$bg-accent-color;
+}
+
+.mini .button-right,
+.mini .button-left {
+  @extend %shared-mini-buttons-css;
+}
+.mini .prev-button,
+.mini .next-button {
+  position: relative;
+  min-width: 19px;
+  height: 100px;
+  cursor: pointer;
+}
+.mini .prev-button {
+  .button-left {
+    top: 43px;
+    transform: rotate(-30deg);
+  }
+  .button-right {
+    top: 20px;
+    transform: rotate(30deg);
+  }
+}
+.mini .next-button {
+  margin-left: auto;
+  .button-left {
+    top: 43px;
+    transform: rotate(30deg);
+  }
+  .button-right {
+    top: 20px;
+    transform: rotate(-30deg);
+  }
+}
+
+.mini .slider-items-wrapper {
+  overflow: hidden;
+
+  .slider-items-container {
+    position: relative;
+    top: 0;
+    left: 0;
+    display: flex;
+    column-gap: 20px;
+    align-items: center;
+    width: 100%;
+    transition: all 2s ease-out;
+  }
+}
+
+.mini.dots-container {
+  display: none;
+}
+
+.full-width.slider {
+  position: relative;
+  display: flex;
+  align-items: center;
+  width: 100%;
+  border: 0;
+}
+
+%shared-full-width-buttons-css {
+  position: absolute;
+  z-index: 100;
+  min-width: 3%;
+  height: 100%;
+  cursor: pointer;
+  background-color: rgb(255 255 255 / 30%);
+  transition: all 200ms ease-out;
+
+  &:hover {
+    background-color: rgb(255 255 255 / 50%);
+  }
+
+  .button-right,
+  .button-left {
+    display: none;
+  }
+}
+
+.full-width .prev-button,
+.full-width .next-button {
+  @extend %shared-full-width-buttons-css;
+}
+
+.full-width .next-button {
+  right: 0;
+}
+
+.full-width .slider-items-wrapper {
+  position: relative;
+  z-index: 10;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+
+  .slider-items-container {
+    position: relative;
+    top: 0;
+    left: 0;
+    display: flex;
+    width: 100%;
+    height: 100%;
+    transition: all 2s ease-out;
+  }
+
+  .slider-item {
+    min-width: 100%;
+    min-height: 100%;
+  }
+}
+
+.full-width .dots-container {
+  position: absolute;
+  bottom: 5%;
+  transform: translate(-50%, -50%);
+  left: 50%;
+  z-index: 200;
+  display: flex;
+  gap: 0.3rem;
+  background-color: transparent;
+
+  .dot {
+    width: 1rem;
+    height: 1rem;
+    cursor: pointer;
+    background-color: palette.$bg-light-color;
+    border-radius: 50%;
+  }
+
+  .active {
+    background-color: palette.$bg-accent-color;
+  }
+}

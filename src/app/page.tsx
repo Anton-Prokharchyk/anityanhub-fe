@@ -1,18 +1,27 @@
 'use client';
 
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 
-import { Button, SearchBar, TextArea, Typography } from '@/components';
+import { Button, SearchBar, Slider, TextArea, Typography } from '@/components';
 import Image from 'next/image';
 
 import { Input } from '@/components/input/input';
 import styles from './page.module.scss';
 
+interface Anime {
+  id: number;
+  title: string;
+}
+
 export default function Home() {
+  const [animeCollection, setAnimeCollection] = useState<Anime[] | []>([]);
   useEffect(() => {
-    console.log('rerender');
-    return () => console.log('unmount');
-  });
+    const collection: Array<{ id: number; title: string }> = [];
+    for (let i = 0; i < 10; i += 1) {
+      collection.push({ id: i, title: 'Your name' });
+    }
+    setAnimeCollection(collection);
+  }, []);
 
   return (
     <main className={styles.main}>
@@ -56,6 +65,28 @@ export default function Home() {
       <Typography tag='h5'>h5 tag</Typography>
       <Typography tag='h6'>h6 tag</Typography>
       <SearchBar placeholder='Search' />
+      <Slider type='mini' width='300px'>
+        {animeCollection.map((animeItem: Anime) => (
+          <div
+            key={animeItem.id}
+            className='slider-card'
+            style={{ backgroundColor: 'red', height: '300px' }}
+          >
+            {animeItem.title}
+          </div>
+        ))}
+      </Slider>
+      <Slider width='100wh' height='100vh' type='full-width'>
+        {animeCollection.map((animeItem: Anime) => (
+          <div
+            key={animeItem.id}
+            className='slider-card'
+            style={{ backgroundColor: 'red', height: '100%' }}
+          >
+            {animeItem.title}
+          </div>
+        ))}
+      </Slider>
     </main>
   );
 }
