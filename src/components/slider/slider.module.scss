@@ -1,6 +1,6 @@
 @use '@/app/variables.scss' as palette;
 
-.full-width.slider {
+.mini.slider {
   display: flex;
   column-gap: 50px;
   align-items: center;
@@ -9,62 +9,48 @@
   border: 0;
 }
 
-.full-width .prev-button {
+%shared-mini-buttons-css {
+  position: absolute;
+  left: 7px;
+  width: 5px;
+  height: 30px;
+  background-color: palette.$bg-accent-color;
+}
+
+.mini .button-right,
+.mini .button-left {
+  @extend %shared-mini-buttons-css;
+}
+.mini .prev-button,
+.mini .next-button {
   position: relative;
   min-width: 19px;
   height: 100px;
   cursor: pointer;
-
-  .button-right {
-    position: absolute;
-    top: 20px;
-    left: 7px;
-    width: 5px;
-    height: 30px;
-    background-color: palette.$bg-accent-color;
-    transform: rotate(30deg);
-  }
-
+}
+.mini .prev-button {
   .button-left {
-    position: absolute;
     top: 43px;
-    left: 7px;
-    width: 5px;
-    height: 30px;
-    background-color: palette.$bg-accent-color;
     transform: rotate(-30deg);
   }
+  .button-right {
+    top: 20px;
+    transform: rotate(30deg);
+  }
 }
-
-.full-width .next-button {
-  position: relative;
-  min-width: 19px;
-  height: 100px;
+.mini .next-button {
   margin-left: auto;
-  cursor: pointer;
-
-  .button-right {
-    position: absolute;
-    top: 20px;
-    left: 7px;
-    width: 5px;
-    height: 30px;
-    background-color: palette.$bg-accent-color;
-    transform: rotate(-30deg);
-  }
-
   .button-left {
-    position: absolute;
     top: 43px;
-    left: 7px;
-    width: 5px;
-    height: 30px;
-    background-color: palette.$bg-accent-color;
     transform: rotate(30deg);
+  }
+  .button-right {
+    top: 20px;
+    transform: rotate(-30deg);
   }
 }
 
-.full-width .slider-items-wrapper {
+.mini .slider-items-wrapper {
   overflow: hidden;
 
   .slider-items-container {
@@ -79,11 +65,11 @@
   }
 }
 
-.full-width.dots-container {
+.mini.dots-container {
   display: none;
 }
 
-.mini.slider {
+.full-width.slider {
   position: relative;
   display: flex;
   align-items: center;
@@ -91,7 +77,7 @@
   border: 0;
 }
 
-%shared-buttons-css {
+%shared-full-width-buttons-css {
   position: absolute;
   z-index: 100;
   min-width: 3%;
@@ -110,17 +96,16 @@
   }
 }
 
-.mini .prev-button {
-  @extend %shared-buttons-css;
+.full-width .prev-button,
+.full-width .next-button {
+  @extend %shared-full-width-buttons-css;
 }
 
-.mini .next-button {
-  @extend %shared-buttons-css;
-
+.full-width .next-button {
   right: 0;
 }
 
-.mini .slider-items-wrapper {
+.full-width .slider-items-wrapper {
   position: relative;
   z-index: 10;
   width: 100%;
@@ -143,10 +128,11 @@
   }
 }
 
-.mini .dots-container {
+.full-width .dots-container {
   position: absolute;
   bottom: 5%;
-  left: auto;
+  transform: translate(-50%, -50%);
+  left: 50%;
   z-index: 200;
   display: flex;
   gap: 0.3rem;

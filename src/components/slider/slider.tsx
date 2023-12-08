@@ -28,12 +28,14 @@ export default function Slider({
   const sliderItemsContainer = useRef<HTMLDivElement>(null);
   const sliderDotsContainer = useRef<HTMLDivElement>(null);
   const [currentSlideNumber, setCurrentSlideNumber] = useState<number>(0);
+
   const changeCurrentSlide = () => {
     const element = sliderItemsContainer.current;
     if (element) {
       element.style.left = `-${element.clientWidth * currentSlideNumber}px`;
     }
   };
+
   const setActiveSliderDot = () => {
     if (sliderDotsContainer.current) {
       const dotsArray = Array.from(sliderDotsContainer.current?.children);
@@ -50,6 +52,7 @@ export default function Slider({
       });
     }
   };
+
   const onDotClickHandler = (
     e:
       | MouseEvent<HTMLDivElement | Element>
@@ -83,9 +86,11 @@ export default function Slider({
   };
 
   useEffect(() => {
-    setActiveSliderDot();
     changeCurrentSlide();
-  }, [currentSlideNumber, changeCurrentSlide, setActiveSliderDot]);
+    setActiveSliderDot();
+  }, [changeCurrentSlide, currentSlideNumber, setActiveSliderDot]);
+
+  setActiveSliderDot();
 
   return (
     <div
@@ -122,7 +127,12 @@ export default function Slider({
             <div
               key={index}
               id={index.toString()}
+              role='button'
+              tabIndex={0}
               onClick={(e) => onDotClickHandler(e)}
+              onKeyDown={(e: KeyboardEvent<HTMLDivElement>) =>
+                e.key === ENTER_KEY_NAME && onSliderButtonClickHandler(e)
+              }
               className={styles.dot}
             />
           ))}

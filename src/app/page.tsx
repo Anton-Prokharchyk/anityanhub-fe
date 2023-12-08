@@ -16,12 +16,11 @@ interface Anime {
 export default function Home() {
   const [animeCollection, setAnimeCollection] = useState<Anime[] | []>([]);
   useEffect(() => {
-    for (let i = 0; i < 25; i += 1) {
-      setAnimeCollection((prevState): Anime[] => [
-        ...prevState,
-        { id: i, title: 'Your name' },
-      ]);
+    const collection: Array<{ id: number; title: string }> = [];
+    for (let i = 0; i < 10; i += 1) {
+      collection.push({ id: i, title: 'Your name' });
     }
+    setAnimeCollection(collection);
   }, []);
 
   return (
@@ -66,23 +65,23 @@ export default function Home() {
       <Typography tag='h5'>h5 tag</Typography>
       <Typography tag='h6'>h6 tag</Typography>
       <SearchBar placeholder='Search' />
-      <Slider type='full-width'>
+      <Slider type='mini' width='300px'>
         {animeCollection.map((animeItem: Anime) => (
           <div
             key={animeItem.id}
             className='slider-card'
-            style={{ backgroundColor: 'red' }}
+            style={{ backgroundColor: 'red', height: '300px' }}
           >
             {animeItem.title}
           </div>
         ))}
       </Slider>
-      <Slider width='300px' height='300px' type='mini'>
+      <Slider width='100wh' height='100vh' type='full-width'>
         {animeCollection.map((animeItem: Anime) => (
           <div
             key={animeItem.id}
             className='slider-card'
-            style={{ backgroundColor: 'red', width: '50px' }}
+            style={{ backgroundColor: 'red', height: '100%' }}
           >
             {animeItem.title}
           </div>
