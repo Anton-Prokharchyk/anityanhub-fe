@@ -90,8 +90,6 @@ export default function Slider({
     setActiveSliderDot();
   }, [changeCurrentSlide, currentSlideNumber, setActiveSliderDot]);
 
-  setActiveSliderDot();
-
   return (
     <div
       style={{ width: width || undefined, height: height || undefined }}
