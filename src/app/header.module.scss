@@ -1,0 +1,32 @@
+@use './variables.scss' as palette;
+
+.header {
+  background-color: palette.$bg-secondary-color;
+  display: flex;
+  justify-content: space-between;
+  padding-left: 50px;
+}
+
+.left-header,
+.right-header {
+  display: flex;
+  align-items: center;
+}
+
+.search-bar {
+  margin-left: 12px;
+}
+
+.navigation-list {
+  display: flex;
+  gap: 40px;
+}
+
+.navigation-list-item {
+  display: flex;
+  list-style: none;
+}
+
+.login-container {
+  margin: 0 80px;
+}

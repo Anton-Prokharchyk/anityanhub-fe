@@ -2,10 +2,15 @@
 
 import React, { useEffect, useState } from 'react';
 
-import { Button, SearchBar, Slider, TextArea, Typography } from '@/components';
-import Image from 'next/image';
+import {
+  Button,
+  Input,
+  SearchBar,
+  Slider,
+  TextArea,
+  Typography,
+} from '@/components';
 
-import { Input } from '@/components/input/input';
 import styles from './page.module.scss';
 
 interface Anime {
@@ -25,12 +30,6 @@ export default function Home() {
 
   return (
     <main className={styles.main}>
-      <Image
-        width={300}
-        height={300}
-        src='/images/main-logo-img.jpg'
-        alt='logo'
-      />
       <Button buttonType='primary'>button</Button>
       <div
         style={{
