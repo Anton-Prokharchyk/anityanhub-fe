@@ -4,11 +4,13 @@
   display: flex;
   align-items: center;
   padding-left: 20px;
+  background-color: palette.$bg-secondary-color;
   border: 2px solid palette.$typography-disabled-color;
   border-radius: 5px;
 
   &.focused {
     color: palette.$typography-primary-color;
+    background-color: palette.$bg-primary-color;
     border-color: palette.$typography-primary-color;
   }
 }
@@ -18,7 +20,7 @@
   width: 100%;
   height: 100%;
   color: palette.$typography-disabled-color;
-  background-color: palette.$bg-primary-color;
+  background-color: palette.$bg-secondary-color;
   border: 0;
 
   &::placeholder {
@@ -27,6 +29,7 @@
 
   &:focus {
     color: palette.$typography-primary-color;
+    background-color: palette.$bg-primary-color;
     outline: none;
   }
 }
@@ -34,9 +37,11 @@
 .search-icon {
   display: block;
   margin: 0 8px;
+  background-color: palette.$bg-secondary-color;
   fill: palette.$typography-disabled-color;
 
   &.focused {
+    background-color: palette.$bg-primary-color;
     fill: palette.$typography-primary-color;
   }
 }
