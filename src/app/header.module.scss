@@ -1,0 +1,15 @@
+.header {
+  display: flex;
+  justify-content: space-between;
+  padding-left: 50px;
+}
+
+.left-header,
+.right-header {
+  display: flex;
+  align-items: center;
+}
+
+.search-bar {
+  margin-left: 12px;
+}

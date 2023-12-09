@@ -1,9 +1,10 @@
 import React from 'react';
-
-import type { Metadata } from 'next';
 import { Inter } from 'next/font/google';
+import type { Metadata } from 'next';
 
 import './globals.scss';
+import './header.module.scss';
+import Header from '@/app/_header';
 
 const inter = Inter({ subsets: ['latin'], display: 'swap' });
 
@@ -22,7 +23,10 @@ export default function RootLayout({
 }) {
   return (
     <html lang='en' className={inter.className}>
-      <body>{children}</body>
+      <body>
+        <Header />
+        {children}
+      </body>
     </html>
   );
 }
