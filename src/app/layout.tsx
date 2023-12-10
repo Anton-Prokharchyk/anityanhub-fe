@@ -1,10 +1,11 @@
 import React from 'react';
-import { Inter } from 'next/font/google';
 import type { Metadata } from 'next';
+import { Inter } from 'next/font/google';
+
+import Header from '@/app/_header';
+// import Footer from '@/app/_footer';
 
 import './globals.scss';
-import './header.module.scss';
-import Header from '@/app/_header';
 
 const inter = Inter({ subsets: ['latin'], display: 'swap' });
 
@@ -26,6 +27,7 @@ export default function RootLayout({
       <body>
         <Header />
         {children}
+        {/* <Footer /> */}
       </body>
     </html>
   );
