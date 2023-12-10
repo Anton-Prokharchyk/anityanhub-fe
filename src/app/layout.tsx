@@ -3,7 +3,7 @@ import type { Metadata } from 'next';
 import { Inter } from 'next/font/google';
 
 import Header from '@/app/_header';
-// import Footer from '@/app/_footer';
+import Footer from '@/app/_footer';
 
 import './globals.scss';
 
@@ -27,7 +27,7 @@ export default function RootLayout({
       <body>
         <Header />
         {children}
-        {/* <Footer /> */}
+        <Footer />
       </body>
     </html>
   );
