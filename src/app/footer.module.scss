@@ -1,0 +1,10 @@
+@use './variables.scss' as palette;
+
+.footer {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 20px;
+  text-align: center;
+  background-color: palette.$bg-primary-color;
+}
