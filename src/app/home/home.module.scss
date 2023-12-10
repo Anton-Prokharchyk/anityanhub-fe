@@ -1,0 +1,17 @@
+@use '../variables.scss' as palette;
+
+.content-section {
+  width: 100%;
+  height: 100%;
+  background-color: palette.$bg-primary-color;
+}
+
+.popular-section,
+.ongoing-section,
+.recommended-section {
+  margin: 28px 0;
+}
+
+.description {
+  margin-left: 64px;
+}
