@@ -5,19 +5,17 @@ import Image from 'next/image';
 
 import { SearchBar, Typography } from '@/components';
 
+import ProfileModal from '@/app/profile-modal';
 import styles from './header.module.scss';
 
 export default function Header() {
   const [isLoggedIn, setIsLoggedIn] = useState<boolean>(false);
+  const [isProfileModalOpen, setIsProfileModalOpen] = useState<boolean>(false);
+
   return (
     <header className={styles.header}>
       <div className={styles['left-header']}>
-        <Image
-          width={70}
-          height={70}
-          src='/images/main-logo-img.jpg'
-          alt='logo'
-        />
+        <Image width={70} height={70} src='/icons/main-icon.ico' alt='logo' />
         <SearchBar
           style={{ width: '300px', height: '40px' }} // TODO: add height and width into searchbar props
           placeholder='Search'
@@ -36,12 +34,15 @@ export default function Header() {
         </nav>
         <div
           className={styles['login-container']}
-          style={{ cursor: 'pointer' }}
           onClick={() => setIsLoggedIn(!isLoggedIn)}
         >
           {isLoggedIn ? (
-            <div className={styles.profile}>
-              <div className={styles['profile-container']}>
+            <div
+              className={styles.profile}
+              style={{ cursor: 'pointer' }}
+              onClick={() => setIsProfileModalOpen(!isProfileModalOpen)}
+            >
+              <div className={styles['profile-info-container']}>
                 <Typography className={styles.username} tag='span'>
                   Username
                 </Typography>
@@ -61,6 +62,7 @@ export default function Header() {
           ) : (
             <div className={styles.login}>SIGN UP / SIGN IN</div>
           )}
+          {isProfileModalOpen && <ProfileModal />}
         </div>
       </div>
     </header>
