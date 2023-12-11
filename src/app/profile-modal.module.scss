@@ -1,0 +1,44 @@
+@use './variables.scss' as palette;
+
+.modal-container {
+  position: absolute;
+  top: 65px;
+  left: -202px;
+  z-index: 1000;
+  display: grid;
+  grid-template-rows: repeat(3, max-content);
+  gap: 20px;
+  width: 350px;
+  padding: 16px;
+  background-color: palette.$bg-secondary-color;
+}
+
+.profile-info {
+  display: grid;
+  grid-template-rows: repeat(2, max-content);
+  grid-template-columns: repeat(2, 1fr);
+  gap: 12px;
+}
+
+.links {
+  display: grid;
+  grid-template-rows: repeat(2, max-content);
+  grid-template-columns: repeat(2, 1fr);
+  row-gap: 4px;
+}
+
+.status {
+  grid-row: 1/2 span;
+  grid-column: 2;
+}
+
+.avatar {
+  width: 175px;
+  height: 175px;
+  background-color: palette.$bg-light-color;
+}
+
+.actions {
+  display: grid;
+  row-gap: 4px;
+}

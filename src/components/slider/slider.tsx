@@ -129,7 +129,7 @@ export default function Slider({
               tabIndex={0}
               onClick={(e) => onDotClickHandler(e)}
               onKeyDown={(e: KeyboardEvent<HTMLDivElement>) =>
-                e.key === ENTER_KEY_NAME && onSliderButtonClickHandler(e)
+                e.key === ENTER_KEY_NAME && onDotClickHandler(e)
               }
               className={styles.dot}
             />
