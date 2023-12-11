@@ -1,12 +1,14 @@
 'use client';
 
-import React from 'react';
+import React, { useState } from 'react';
 import Image from 'next/image';
 
-import { SearchBar } from '@/components';
+import { SearchBar, Typography } from '@/components';
+
 import styles from './header.module.scss';
 
 export default function Header() {
+  const [isLoggedIn, setIsLoggedIn] = useState<boolean>(false);
   return (
     <header className={styles.header}>
       <div className={styles['left-header']}>
@@ -32,7 +34,34 @@ export default function Header() {
             <li className={styles['navigation-list-item']}>Ongoing</li>
           </ul>
         </nav>
-        <div className={styles['login-container']}>SIGN UP / SIGN IN</div>
+        <div
+          className={styles['login-container']}
+          style={{ cursor: 'pointer' }}
+          onClick={() => setIsLoggedIn(!isLoggedIn)}
+        >
+          {isLoggedIn ? (
+            <div className={styles.profile}>
+              <div className={styles['profile-container']}>
+                <Typography className={styles.username} tag='span'>
+                  Username
+                </Typography>
+                <Typography className={styles.status} tag='span'>
+                  Online
+                </Typography>
+              </div>
+              <div
+                className={styles.avatar}
+                style={{
+                  backgroundColor: 'white',
+                  width: '55px',
+                  height: '55px',
+                }}
+              />
+            </div>
+          ) : (
+            <div className={styles.login}>SIGN UP / SIGN IN</div>
+          )}
+        </div>
       </div>
     </header>
   );
