@@ -58,17 +58,21 @@ export default function LoginModal({ setIsLoginModalOpen }: LoginModalProps) {
             control={control}
             rules={{ required: true }}
             render={({ field }) => (
-              <Input
-                {...field}
-                style={{ marginBottom: '65px' }}
-                type='password'
-                placeholder='password'
-              />
+              <Input {...field} type='password' placeholder='password' />
             )}
             name='password'
           />
-
-          <Input value='Sign In' type='submit' appearance='primary' />
+          <div className={styles['forgot-password']}>
+            <Button style={{ padding: '0', margin: '8px' }} appearance='none'>
+              Forgot password
+            </Button>
+          </div>
+          <Input
+            style={{ marginTop: '65px' }}
+            value='Sign In'
+            type='submit'
+            appearance='primary'
+          />
           <Button appearance='none'>
             <Link href='https://www.google.com'>Sign Up</Link>
           </Button>

@@ -1,24 +1,31 @@
 @use './variables' as palette;
 
 .login-modal-background {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1000;
   display: grid;
   align-items: center;
   justify-items: center;
   width: 100vw;
   height: 100vh;
-  background-color: rgba(0, 0, 0, 0.65);
-  position: fixed;
-  z-index: 1000;
-  top: 0;
-  left: 0;
+  cursor: pointer;
+  background-color: rgb(0 0 0 / 65%);
 }
 
 .login-modal-container {
+  position: relative;
+  z-index: 100000;
   display: flex;
   flex-direction: column;
-  z-index: 1000;
-  background-color: palette.$bg-secondary-color;
   width: 510px;
   height: 670px;
   padding: 150px 100px 120px;
+  cursor: default;
+  background-color: palette.$bg-secondary-color;
+}
+
+.forgot-password {
+  align-self: end;
 }
