@@ -2,8 +2,9 @@
 
 import React, { useState } from 'react';
 import Image from 'next/image';
+import Link from 'next/link';
 
-import { SearchBar, Typography } from '@/components';
+import { Button, SearchBar, Typography } from '@/components';
 import LoginModal from '@/app/login-modal';
 import ProfileModal from '@/app/profile-modal';
 
@@ -62,11 +63,18 @@ export default function Header() {
               />
             </div>
           ) : (
-            <div
-              onClick={() => setIsLoginModalOpen(true)}
-              className={styles.login}
-            >
-              SIGN UP / SIGN IN
+            <div className={styles.login}>
+              <Button appearance='none' style={{ padding: '0' }}>
+                <Link href='https://google.com'>SIGN UP</Link>
+              </Button>
+              /
+              <Button
+                onClick={() => setIsLoginModalOpen(true)}
+                appearance='none'
+                style={{ padding: '0' }}
+              >
+                SIGN IN
+              </Button>
             </div>
           )}
           {isProfileModalOpen && <ProfileModal />}
