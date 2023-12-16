@@ -4,13 +4,15 @@ import React, { useState } from 'react';
 import Image from 'next/image';
 
 import { SearchBar, Typography } from '@/components';
-
+import LoginModal from '@/app/login-modal';
 import ProfileModal from '@/app/profile-modal';
+
 import styles from './header.module.scss';
 
 export default function Header() {
   const [isLoggedIn, setIsLoggedIn] = useState<boolean>(false);
   const [isProfileModalOpen, setIsProfileModalOpen] = useState<boolean>(false);
+  const [isLoginModalOpen, setIsLoginModalOpen] = useState<boolean>(true);
 
   return (
     <header className={styles.header}>
@@ -60,11 +62,19 @@ export default function Header() {
               />
             </div>
           ) : (
-            <div className={styles.login}>SIGN UP / SIGN IN</div>
+            <div
+              onClick={() => setIsLoginModalOpen(true)}
+              className={styles.login}
+            >
+              SIGN UP / SIGN IN
+            </div>
           )}
           {isProfileModalOpen && <ProfileModal />}
         </div>
       </div>
+      {isLoginModalOpen && (
+        <LoginModal setIsLoginModalOpen={setIsLoginModalOpen} />
+      )}
     </header>
   );
 }

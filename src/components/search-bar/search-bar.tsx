@@ -6,7 +6,7 @@ import SearchIcon from '@/components/search-bar/search-icon.svg';
 
 import styles from './search-bar.module.scss';
 
-export function SearchBar({
+export default function SearchBar({
   placeholder,
   className,
   ...props
