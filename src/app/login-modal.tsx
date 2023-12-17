@@ -3,9 +3,11 @@
 import React, { Dispatch, SetStateAction } from 'react';
 import { Controller, useForm } from 'react-hook-form';
 import Link from 'next/link';
+import * as y from 'yup';
 
 import { Button, Input, Typography } from '@/components';
 
+import { yupResolver } from '@hookform/resolvers/yup';
 import styles from './login-modal.module.scss';
 
 interface LoginModalProps {
@@ -13,16 +15,31 @@ interface LoginModalProps {
 }
 
 type Inputs = {
-  username: string;
+  login: string;
   password: string;
 };
+
+const validationSchema = y.object({
+  login: y
+    .string()
+    .required('Field is required')
+    .min(4, 'Should be minimum 4 characters')
+    .max(14, 'Should be maximum 14 characters')
+    .trim(),
+  password: y
+    .string()
+    .required('Field is required')
+    .min(4, 'Should be minimum 4 characters')
+    .max(14, 'Should be maximum 14 characters')
+    .trim(),
+});
 
 export default function LoginModal({ setIsLoginModalOpen }: LoginModalProps) {
   const {
     handleSubmit,
     control,
     formState: { errors },
-  } = useForm<Inputs>();
+  } = useForm<Inputs>({ resolver: yupResolver(validationSchema) });
 
   const onSubmit = handleSubmit((data: Inputs) => console.log(data));
   const onBackgroundClick = (): void => setIsLoginModalOpen(false);
@@ -60,6 +77,7 @@ export default function LoginModal({ setIsLoginModalOpen }: LoginModalProps) {
             )}
             name='login'
           />
+          <div>{errors.login?.message}</div>
           <Controller
             control={control}
             rules={{ required: true }}
@@ -73,6 +91,7 @@ export default function LoginModal({ setIsLoginModalOpen }: LoginModalProps) {
             )}
             name='password'
           />
+          <div>{errors.password?.message}</div>
           <div className={styles['forgot-password']}>
             <Button style={{ padding: '0', margin: '8px' }} appearance='none'>
               Forgot password
