@@ -7,4 +7,5 @@ export interface InputProps
   > {
   placeholder?: string;
   appearance?: 'primary' | 'dark' | 'bordered' | 'none';
+  error?: boolean;
 }

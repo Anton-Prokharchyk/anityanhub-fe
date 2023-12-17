@@ -18,6 +18,9 @@
     border-color: palette.$typography-primary-color;
     outline: none;
   }
+  &.error {
+    border-color: palette.$typography-error-color;
+  }
 }
 
 // button

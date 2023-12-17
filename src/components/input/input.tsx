@@ -9,6 +9,7 @@ export default function Input({
   placeholder,
   type,
   appearance,
+  error = false,
   ...props
 }: InputProps): React.ReactElement {
   let classes;
@@ -33,6 +34,7 @@ export default function Input({
     default:
       break;
   }
+  classes = cn(classes, { [styles.error]: error });
   return (
     <input
       type={type}

@@ -12,16 +12,21 @@ interface LoginModalProps {
   setIsLoginModalOpen: Dispatch<SetStateAction<boolean>>;
 }
 
-// type Inputs = {
-//   username: string;
-//   password: string;
-// };
+type Inputs = {
+  username: string;
+  password: string;
+};
 
 export default function LoginModal({ setIsLoginModalOpen }: LoginModalProps) {
-  const { handleSubmit, control } = useForm();
+  const {
+    handleSubmit,
+    control,
+    formState: { errors },
+  } = useForm<Inputs>();
 
-  const onSubmit = handleSubmit((data) => console.log(data));
+  const onSubmit = handleSubmit((data: Inputs) => console.log(data));
   const onBackgroundClick = (): void => setIsLoginModalOpen(false);
+  console.log(errors);
   return (
     <div
       onClick={() => onBackgroundClick()}
@@ -50,6 +55,7 @@ export default function LoginModal({ setIsLoginModalOpen }: LoginModalProps) {
                 style={{ marginBottom: '30px' }}
                 type='text'
                 placeholder='login'
+                error={Boolean(errors.login)}
               />
             )}
             name='login'
@@ -58,7 +64,12 @@ export default function LoginModal({ setIsLoginModalOpen }: LoginModalProps) {
             control={control}
             rules={{ required: true }}
             render={({ field }) => (
-              <Input {...field} type='password' placeholder='password' />
+              <Input
+                {...field}
+                error={Boolean(errors.password)}
+                type='password'
+                placeholder='password'
+              />
             )}
             name='password'
           />
@@ -72,6 +83,7 @@ export default function LoginModal({ setIsLoginModalOpen }: LoginModalProps) {
             value='Sign In'
             type='submit'
             appearance='primary'
+            error
           />
           <Button appearance='none'>
             <Link href='https://www.google.com'>Sign Up</Link>
