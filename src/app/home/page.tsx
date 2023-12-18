@@ -37,8 +37,8 @@ export default function Home() {
       </Slider>
       <div className={styles['popular-section']}>
         <div className={styles.description}>
-          <Typography tag='span'>Watch more</Typography>
-          <Typography tag='span' color='accent'>
+          <Typography Tag='span'>Watch more</Typography>
+          <Typography Tag='span' color='accent'>
             Popular
           </Typography>
         </div>
@@ -61,8 +61,8 @@ export default function Home() {
       </div>
       <div className={styles['ongoing-section']}>
         <div className={styles.description}>
-          <Typography tag='span'>Watch more</Typography>
-          <Typography tag='span' color='accent'>
+          <Typography Tag='span'>Watch more</Typography>
+          <Typography Tag='span' color='accent'>
             Ongoing
           </Typography>
         </div>
@@ -84,8 +84,8 @@ export default function Home() {
       </div>
       <div className={styles['recommended-section']}>
         <div className={styles.description}>
-          <Typography tag='span'>Watch more</Typography>
-          <Typography tag='span' color='accent'>
+          <Typography Tag='span'>Watch more</Typography>
+          <Typography Tag='span' color='accent'>
             Recommended
           </Typography>
         </div>

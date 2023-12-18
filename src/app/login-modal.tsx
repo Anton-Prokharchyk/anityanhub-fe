@@ -57,7 +57,7 @@ export default function LoginModal({ setIsLoginModalOpen }: LoginModalProps) {
         >
           <Typography
             style={{ fontSize: '32px', marginBottom: '40px' }}
-            tag='p'
+            Tag='p'
             className={styles.title}
             color='primary'
           >

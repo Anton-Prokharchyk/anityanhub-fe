@@ -46,10 +46,10 @@ export default function Header() {
               onClick={() => setIsProfileModalOpen(!isProfileModalOpen)}
             >
               <div className={styles['profile-info-container']}>
-                <Typography className={styles.username} tag='span'>
+                <Typography className={styles.username} Tag='span'>
                   Username
                 </Typography>
-                <Typography className={styles.status} tag='span'>
+                <Typography className={styles.status} Tag='span'>
                   Online
                 </Typography>
               </div>
