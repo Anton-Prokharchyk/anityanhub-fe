@@ -8,12 +8,11 @@ import styles from './typography.module.scss';
 export function Typography({
   children,
   color = 'primary',
-  tag,
+  Tag = 'span',
   weight = 'normal',
   // TODO: add fontSize property
   ...props
 }: TypographyProps): React.ReactElement {
-  const CustomTag = tag;
   const classes = cn({
     [styles.primary]: color === 'primary',
     [styles.accent]: color === 'accent',
@@ -24,8 +23,8 @@ export function Typography({
     [styles.light]: weight === 'light',
   });
   return (
-    <CustomTag className={classes} {...props}>
+    <Tag className={classes} {...props}>
       {children}
-    </CustomTag>
+    </Tag>
   );
 }
