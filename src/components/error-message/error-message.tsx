@@ -7,6 +7,11 @@ import styles from './error-message.module.scss';
 export default function ErrorMessage({
   children,
   Tag = 'p',
+  ...props
 }: ErrorMessageProptypes) {
-  return <Tag className={styles['error-message']}>{children}</Tag>;
+  return (
+    <Tag className={styles['error-message']} {...props}>
+      {children}
+    </Tag>
+  );
 }

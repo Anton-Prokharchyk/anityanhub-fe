@@ -12,29 +12,7 @@ export default function Input({
   error = false,
   ...props
 }: InputProps): React.ReactElement {
-  let classes;
-
-  switch (type) {
-    case 'button':
-    case 'submit':
-      classes = cn(styles.btn, {
-        [styles.primary]: appearance === 'primary',
-        [styles.dark]: appearance === 'dark',
-        [styles.bordered]: appearance === 'bordered',
-        [styles.none]: appearance === 'none',
-      });
-      break;
-    case 'password':
-    case 'text':
-    case 'email':
-    case 'tel':
-    case 'hidden':
-      classes = cn(styles.input);
-      break;
-    default:
-      break;
-  }
-  classes = cn(classes, { [styles.error]: error });
+  const classes = cn(styles.input, { [styles.error]: error });
   return (
     <input
       type={type}

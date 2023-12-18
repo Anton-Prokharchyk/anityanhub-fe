@@ -1,13 +1,13 @@
 'use client';
 
-import React, { Dispatch, SetStateAction } from 'react';
-import Link from 'next/link';
+import React, { Dispatch, SetStateAction, useCallback } from 'react';
 import { Controller, useForm } from 'react-hook-form';
-import { yupResolver } from '@hookform/resolvers/yup';
+import Link from 'next/link';
 import * as y from 'yup';
 
-import { Button, Input, Typography } from '@/components';
+import { Button, ErrorMessage, Input, Typography } from '@/components';
 
+import { yupResolver } from '@hookform/resolvers/yup';
 import styles from './login-modal.module.scss';
 
 interface LoginModalProps {
@@ -41,9 +41,14 @@ export default function LoginModal({ setIsLoginModalOpen }: LoginModalProps) {
     formState: { errors },
   } = useForm<Inputs>({ resolver: yupResolver(validationSchema) });
 
-  const onSubmit = handleSubmit((data: Inputs) => console.log(data));
-  const onBackgroundClick = (): void => setIsLoginModalOpen(false);
-  console.log(errors);
+  const onSubmit = useCallback(
+    handleSubmit((data: Inputs) => console.log(data)),
+    []
+  );
+  const onBackgroundClick = useCallback(
+    (): void => setIsLoginModalOpen(false),
+    [setIsLoginModalOpen]
+  );
   return (
     <div
       onClick={() => onBackgroundClick()}
@@ -69,7 +74,6 @@ export default function LoginModal({ setIsLoginModalOpen }: LoginModalProps) {
             render={({ field }) => (
               <Input
                 {...field}
-                style={{ marginBottom: '30px' }}
                 type='text'
                 placeholder='login'
                 error={Boolean(errors.login)}
@@ -77,7 +81,9 @@ export default function LoginModal({ setIsLoginModalOpen }: LoginModalProps) {
             )}
             name='login'
           />
-          <div>{errors.login?.message}</div>
+          <ErrorMessage style={{ fontSize: '12px', padding: '4px' }}>
+            {errors.login?.message}
+          </ErrorMessage>
           <Controller
             control={control}
             rules={{ required: true }}
@@ -86,12 +92,15 @@ export default function LoginModal({ setIsLoginModalOpen }: LoginModalProps) {
                 {...field}
                 error={Boolean(errors.password)}
                 type='password'
+                style={{ marginTop: '30px' }}
                 placeholder='password'
               />
             )}
             name='password'
           />
-          <div>{errors.password?.message}</div>
+          <ErrorMessage style={{ fontSize: '12px', padding: '4px' }}>
+            {errors?.password?.message}
+          </ErrorMessage>
           <div className={styles['forgot-password']}>
             <Button style={{ padding: '0', margin: '8px' }} appearance='none'>
               Forgot password
@@ -104,7 +113,6 @@ export default function LoginModal({ setIsLoginModalOpen }: LoginModalProps) {
           >
             Sign In
           </Button>
-
           <Button appearance='none'>
             <Link href='https://www.google.com'>Sign Up</Link>
           </Button>
