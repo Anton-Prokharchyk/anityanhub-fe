@@ -1,13 +1,13 @@
 'use client';
 
 import React, { Dispatch, SetStateAction } from 'react';
-import { Controller, useForm } from 'react-hook-form';
 import Link from 'next/link';
+import { Controller, useForm } from 'react-hook-form';
+import { yupResolver } from '@hookform/resolvers/yup';
 import * as y from 'yup';
 
 import { Button, Input, Typography } from '@/components';
 
-import { yupResolver } from '@hookform/resolvers/yup';
 import styles from './login-modal.module.scss';
 
 interface LoginModalProps {
@@ -97,13 +97,14 @@ export default function LoginModal({ setIsLoginModalOpen }: LoginModalProps) {
               Forgot password
             </Button>
           </div>
-          <Input
+          <Button
             style={{ marginTop: '65px' }}
-            value='Sign In'
             type='submit'
             appearance='primary'
-            error
-          />
+          >
+            Sign In
+          </Button>
+
           <Button appearance='none'>
             <Link href='https://www.google.com'>Sign Up</Link>
           </Button>
