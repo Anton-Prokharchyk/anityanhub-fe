@@ -5,7 +5,7 @@ import { TextAreaProps } from '@/components/text-area/text-area.proptypes';
 
 import styles from '@/components/text-area/text-area.module.scss';
 
-export function TextArea({
+export default function TextArea({
   placeholder,
   ...props
 }: TextAreaProps): React.ReactElement {

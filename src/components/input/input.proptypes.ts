@@ -6,4 +6,6 @@ export interface InputProps
     HTMLInputElement
   > {
   placeholder?: string;
+  appearance?: 'primary' | 'dark' | 'bordered' | 'none';
+  error?: boolean;
 }

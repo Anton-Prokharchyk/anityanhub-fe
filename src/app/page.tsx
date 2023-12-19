@@ -7,7 +7,7 @@ import {
   ErrorMessage,
   Input,
   SearchBar,
-  TextArea,
+  Textarea,
   Typography,
 } from '@/components';
 
@@ -16,7 +16,7 @@ import styles from './page.module.scss';
 export default function Main() {
   return (
     <main className={styles.main}>
-      <Button buttonType='primary'>button</Button>
+      <Button appearance='primary'>button</Button>
       <div
         style={{
           backgroundColor: 'white',
@@ -27,12 +27,12 @@ export default function Main() {
           justifyContent: 'center',
         }}
       >
-        <Button buttonType='dark'>button</Button>
+        <Button appearance='dark'>button</Button>
       </div>
-      <Button buttonType='none'>button</Button>
-      <Button buttonType='bordered'>button</Button>
+      <Button appearance='none'>button</Button>
+      <Button appearance='bordered'>button</Button>
       <Input placeholder='Enter name' />
-      <TextArea placeholder='Write a comment ...' />
+      <Textarea placeholder='Write a comment ...' />
       <Typography Tag='p'>P tag</Typography>
       <Typography Tag='span'>span tag</Typography>
       <Typography Tag='h1' color='primary'>

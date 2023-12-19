@@ -5,16 +5,16 @@ import { ButtonProps } from '@/components/button/button.proptypes';
 
 import styles from './button.module.scss';
 
-export function Button({
+export default function Button({
   children,
-  buttonType = 'primary',
+  appearance = 'primary',
   ...props
 }: ButtonProps): React.ReactElement {
   const classes = cn(styles.btn, {
-    [styles.primary]: buttonType === 'primary',
-    [styles.dark]: buttonType === 'dark',
-    [styles.bordered]: buttonType === 'bordered',
-    [styles.none]: buttonType === 'none',
+    [styles.primary]: appearance === 'primary',
+    [styles.dark]: appearance === 'dark',
+    [styles.bordered]: appearance === 'bordered',
+    [styles.none]: appearance === 'none',
   });
   return (
     <button className={classes} {...props}>

@@ -1,5 +1,6 @@
 @use '@/app/variables.scss' as palette;
 
+// input
 .input {
   display: block;
   padding: 20px;
@@ -16,5 +17,9 @@
     color: palette.$typography-primary-color;
     border-color: palette.$typography-primary-color;
     outline: none;
+  }
+
+  &.error {
+    border-color: palette.$typography-error-color;
   }
 }

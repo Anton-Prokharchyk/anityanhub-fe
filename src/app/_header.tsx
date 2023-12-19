@@ -2,15 +2,18 @@
 
 import React, { useState } from 'react';
 import Image from 'next/image';
+import Link from 'next/link';
 
-import { SearchBar, Typography } from '@/components';
-
+import { Button, SearchBar, Typography } from '@/components';
+import LoginModal from '@/app/login-modal';
 import ProfileModal from '@/app/profile-modal';
+
 import styles from './header.module.scss';
 
 export default function Header() {
   const [isLoggedIn, setIsLoggedIn] = useState<boolean>(false);
   const [isProfileModalOpen, setIsProfileModalOpen] = useState<boolean>(false);
+  const [isLoginModalOpen, setIsLoginModalOpen] = useState<boolean>(true);
 
   return (
     <header className={styles.header}>
@@ -43,10 +46,10 @@ export default function Header() {
               onClick={() => setIsProfileModalOpen(!isProfileModalOpen)}
             >
               <div className={styles['profile-info-container']}>
-                <Typography className={styles.username} tag='span'>
+                <Typography className={styles.username} Tag='span'>
                   Username
                 </Typography>
-                <Typography className={styles.status} tag='span'>
+                <Typography className={styles.status} Tag='span'>
                   Online
                 </Typography>
               </div>
@@ -60,11 +63,26 @@ export default function Header() {
               />
             </div>
           ) : (
-            <div className={styles.login}>SIGN UP / SIGN IN</div>
+            <div className={styles.login}>
+              <Button appearance='none' style={{ padding: '0' }}>
+                <Link href='https://google.com'>SIGN UP</Link>
+              </Button>
+              /
+              <Button
+                onClick={() => setIsLoginModalOpen(true)}
+                appearance='none'
+                style={{ padding: '0' }}
+              >
+                SIGN IN
+              </Button>
+            </div>
           )}
           {isProfileModalOpen && <ProfileModal />}
         </div>
       </div>
+      {isLoginModalOpen && (
+        <LoginModal setIsLoginModalOpen={setIsLoginModalOpen} />
+      )}
     </header>
   );
 }

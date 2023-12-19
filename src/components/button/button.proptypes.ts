@@ -6,5 +6,5 @@ export interface ButtonProps
     HTMLButtonElement
   > {
   children: ReactNode;
-  buttonType: 'primary' | 'dark' | 'bordered' | 'none';
+  appearance: 'primary' | 'dark' | 'bordered' | 'none';
 }

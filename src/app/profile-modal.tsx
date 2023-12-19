@@ -12,9 +12,9 @@ export default function ProfileModal() {
       <div className={styles['profile-info']}>
         <div className={styles.avatar}></div>
         <div className={styles.status}>
-          <Typography tag='p'>Online </Typography>
-          <Typography tag='p'>Away </Typography>
-          <Typography tag='p'>Invisible</Typography>
+          <Typography Tag='p'>Online </Typography>
+          <Typography Tag='p'>Away </Typography>
+          <Typography Tag='p'>Invisible</Typography>
         </div>
         <div className={styles.username}>Username</div>
       </div>

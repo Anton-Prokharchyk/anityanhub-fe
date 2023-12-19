@@ -5,7 +5,7 @@ import { TypographyProps } from '@/components/typography/typography.proptypes';
 
 import styles from './typography.module.scss';
 
-export function Typography({
+export default function Typography({
   children,
   color = 'primary',
   Tag = 'span',
