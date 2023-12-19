@@ -39,7 +39,7 @@ export default function LoginModal({ setIsLoginModalOpen }: LoginModalProps) {
     handleSubmit,
     control,
     formState: { errors },
-  } = useForm<Inputs>({ resolver: yupResolver(validationSchema) });
+  } = useForm<Inputs>({ resolver: yupResolver(validationSchema), mode: 'all' });
 
   const onSubmit = useCallback(
     handleSubmit((data: Inputs) => console.log(data)),
