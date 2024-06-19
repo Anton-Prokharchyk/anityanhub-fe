@@ -8,9 +8,10 @@ import styles from './button.module.scss';
 export default function Button({
   children,
   appearance = 'primary',
+  className,
   ...props
 }: ButtonProps): React.ReactElement {
-  const classes = cn(styles.btn, {
+  const classes = cn(styles.btn, className, {
     [styles.primary]: appearance === 'primary',
     [styles.dark]: appearance === 'dark',
     [styles.bordered]: appearance === 'bordered',

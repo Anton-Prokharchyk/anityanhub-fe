@@ -13,7 +13,7 @@ import styles from './header.module.scss';
 export default function Header() {
   const [isLoggedIn, setIsLoggedIn] = useState<boolean>(false);
   const [isProfileModalOpen, setIsProfileModalOpen] = useState<boolean>(false);
-  const [isLoginModalOpen, setIsLoginModalOpen] = useState<boolean>(true);
+  const [isLoginModalOpen, setIsLoginModalOpen] = useState<boolean>(false);
 
   return (
     <header className={styles.header}>
