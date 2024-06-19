@@ -1,6 +1,7 @@
 import React from 'react';
 import type { Metadata } from 'next';
 import { Inter } from 'next/font/google';
+import cn from 'classnames';
 
 import Header from '@/app/_header';
 import Footer from '@/app/_footer';
@@ -26,7 +27,7 @@ export default function RootLayout({
     <html lang='en' className={inter.className}>
       <body>
         <Header />
-        {children}
+        <main className={cn('main-content')}>{children}</main>
         <Footer />
       </body>
     </html>
