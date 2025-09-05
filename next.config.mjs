@@ -35,6 +35,11 @@ const nextConfig = {
     // Modify the file loader rule to ignore *.svg, since we have it handled now.
     fileLoaderRule.exclude = /\.svg$/i;
 
+    config.watchOptions = {
+      poll: 1000,
+      aggregateTimeout: 300,
+    };
+
     return config;
   },
 };
