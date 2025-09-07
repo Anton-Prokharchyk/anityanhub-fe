@@ -1,5 +1,5 @@
 FROM node:22.14.0-alpine
-WORKDIR /frontend
+WORKDIR /ath-frontend
 ADD package.json package.json
 RUN npm install
 ADD . .
