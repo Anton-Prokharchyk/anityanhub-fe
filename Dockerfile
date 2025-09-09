@@ -6,4 +6,3 @@ ADD . .
 CMD ["npm", "run", "dev"]
 
 EXPOSE 3000
-#test comment
