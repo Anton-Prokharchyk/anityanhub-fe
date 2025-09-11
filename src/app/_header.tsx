@@ -1,12 +1,12 @@
 'use client';
 
 import React, { useState } from 'react';
-import Image from 'next/image';
 import Link from 'next/link';
 
 import { Button, SearchBar, Typography } from '@/components';
 import LoginModal from '@/app/login-modal';
 import ProfileModal from '@/app/profile-modal';
+import Logo from '@/../public/ath-main-logo.svg';
 
 import styles from './header.module.scss';
 
@@ -18,7 +18,7 @@ export default function Header() {
   return (
     <header className={styles.header}>
       <div className={styles['left-header']}>
-        <Image width={70} height={70} src='/icons/main-icon.ico' alt='logo' />
+        <Logo alt='logo' />
         <SearchBar
           style={{ width: '300px', height: '40px' }} // TODO: add height and width into searchbar props
           placeholder='Search'
