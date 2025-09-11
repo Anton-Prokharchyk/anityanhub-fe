@@ -1,0 +1,11 @@
+<svg width="150" height="50" viewBox="0 0 220 70" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="AnityanHub wordmark">
+<defs>
+<linearGradient id="g1" x1="0" x2="1">
+<stop offset="0" stop-color="#743ad5" />
+<stop offset="1" stop-color="#d53a9d" />
+</linearGradient>
+</defs>
+<rect rx="8" x="123" y="19" width="50" height="35" fill="orange" />
+<text x="18" y="44" font-family="Segoe UI, Inter, Arial" font-size="28" font-weight="700" fill="url(#g1)">anityan</text>
+<text x="130" y="44" font-family="Segoe UI, Inter, Arial" font-size="20" font-weight="700" fill="#0B1220">hub</text>
+</svg>
