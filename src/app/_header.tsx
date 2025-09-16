@@ -5,13 +5,14 @@ import Link from 'next/link';
 
 import { Button, SearchBar, Typography } from '@/components';
 import LoginModal from '@/app/login-modal';
-import ProfileModal from '@/app/profile-modal';
 import Logo from '@/../public/ath-main-logo.svg';
+import ProfileModal from '@/app/profile-modal';
 
 import styles from './header.module.scss';
 
 export default function Header() {
   const [isLoggedIn, setIsLoggedIn] = useState<boolean>(false);
+
   const [isProfileModalOpen, setIsProfileModalOpen] = useState<boolean>(false);
   const [isLoginModalOpen, setIsLoginModalOpen] = useState<boolean>(false);
 
