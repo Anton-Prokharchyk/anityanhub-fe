@@ -1,8 +1,7 @@
 'use client';
 
 import React, { useEffect, useState } from 'react';
-
-import { Slider, Typography } from '@/components';
+import { Slider, Typography } from 'anityanhub-ui-lib';
 
 import styles from './home.module.scss';
 

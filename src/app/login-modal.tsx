@@ -4,8 +4,7 @@ import React, { Dispatch, SetStateAction, useCallback } from 'react';
 import { Controller, useForm } from 'react-hook-form';
 import Link from 'next/link';
 import * as y from 'yup';
-
-import { Button, ErrorMessage, Input, Typography } from '@/components';
+import { Button, ErrorMessage, Input, Typography } from 'anityanhub-ui-lib';
 
 import { yupResolver } from '@hookform/resolvers/yup';
 import styles from './login-modal.module.scss';
