@@ -1,10 +1,9 @@
 import React from 'react';
+import { Textarea, Button, Typography } from 'anityanhub-ui-lib';
+
 import data from '@/seed';
-
 import Image from 'next/image';
-import { Button, Typography } from '@/components';
 
-import TextArea from '@/components/text-area/text-area';
 import styles from './detailsPage.module.scss';
 
 type Anime = {
@@ -127,13 +126,13 @@ export default function DetailsPage() {
                 </figcaption>
               </figure>
               <div className={styles['add-comment-body']}>
-                <TextArea
+                <Textarea
                   placeholder='Add comment'
                   className={styles['add-comment-text']}
                   minLength={1}
                   maxLength={5000}
                   rows={3}
-                ></TextArea>
+                ></Textarea>
                 <Button
                   className={styles['add-comment-button']}
                   appearance='primary'

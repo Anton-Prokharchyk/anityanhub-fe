@@ -2,7 +2,7 @@
 
 import React from 'react';
 
-import { Typography } from '@/components';
+import { Typography } from 'anityanhub-ui-lib';
 
 import styles from './footer.module.scss';
 

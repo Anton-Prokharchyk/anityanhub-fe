@@ -1,7 +1,6 @@
 'use client';
 
 import React from 'react';
-
 import {
   Button,
   ErrorMessage,
@@ -9,7 +8,7 @@ import {
   SearchBar,
   Textarea,
   Typography,
-} from '@/components';
+} from 'anityanhub-ui-lib';
 
 import styles from './page.module.scss';
 

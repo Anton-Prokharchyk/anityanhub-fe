@@ -2,8 +2,8 @@
 
 import React, { useState } from 'react';
 import Link from 'next/link';
+import { Button, SearchBar, Typography } from 'anityanhub-ui-lib';
 
-import { Button, SearchBar, Typography } from '@/components';
 import LoginModal from '@/app/login-modal';
 import Logo from '@/../public/ath-main-logo.svg';
 import ProfileModal from '@/app/profile-modal';

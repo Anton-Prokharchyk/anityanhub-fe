@@ -7,6 +7,7 @@ import Header from '@/app/_header';
 import Footer from '@/app/_footer';
 
 import './globals.scss';
+import 'anityanhub-ui-lib/style.css';
 
 const inter = Inter({ subsets: ['latin'], display: 'swap' });
 

@@ -1,8 +1,7 @@
 'use client';
 
 import React from 'react';
-
-import { Typography } from '@/components';
+import { Typography } from 'anityanhub-ui-lib';
 
 import styles from './profile-modal.module.scss';
 
