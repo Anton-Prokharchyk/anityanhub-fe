@@ -1,23 +1,26 @@
 @use './variables.scss' as palette;
 
-.header {
-  position: fixed;
-  z-index: 100;
+.header-wrapper {
+  position: sticky;
+  top: 0;
+}
+
+.top-header {
   display: flex;
   justify-content: space-between;
-  min-width: 100%;
-  margin: 5px 0;
+  width: 1280px;
+  padding: 20px 0;
   background-color: palette.$bg-secondary-color;
 }
 
-.header::before {
+.bot-header::before {
   position: absolute;
-  top: -5px;
+  top: 0;
   z-index: 100;
   display: flex;
   justify-content: center;
   min-width: 100%;
-  min-height: 5px;
+  height: 5px;
   content: '';
   background-image: linear-gradient(
     to left,
@@ -26,20 +29,29 @@
   );
 }
 
-.header::after {
+.bot-header::after {
   position: absolute;
-  bottom: -5px;
+  bottom: 0;
   z-index: 100;
   display: flex;
   align-self: end;
   min-width: 100%;
-  min-height: 5px;
+  height: 5px;
   content: '';
   background-image: linear-gradient(
     to right,
     palette.$typography-accent-color,
     rgb(255 90 118)
   );
+}
+
+.bot-header {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  width: 1280px;
+  padding: 28px 0;
+  background-color: palette.$bg-secondary-color;
 }
 
 .left-header,
