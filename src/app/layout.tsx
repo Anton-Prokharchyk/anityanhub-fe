@@ -5,6 +5,8 @@ import cn from 'classnames';
 
 import Header from '@/app/_header';
 import Footer from '@/app/_footer';
+import MainWrapper from '@/app/MainWrapper';
+import MainContentWrapper from '@/app/MainContentWrapper';
 
 import './globals.scss';
 import 'anityanhub-ui-lib/style.css';
@@ -27,9 +29,13 @@ export default function RootLayout({
   return (
     <html lang='en' className={inter.className}>
       <body>
-        <Header />
-        <main className={cn('main-content')}>{children}</main>
-        <Footer />
+        <MainWrapper>
+          <MainContentWrapper>
+            <Header />
+            <main className={cn('main-content')}>{children}</main>
+            <Footer />
+          </MainContentWrapper>
+        </MainWrapper>
       </body>
     </html>
   );
