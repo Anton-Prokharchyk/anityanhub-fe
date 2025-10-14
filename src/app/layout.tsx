@@ -2,14 +2,14 @@ import React from 'react';
 import type { Metadata } from 'next';
 import { Inter } from 'next/font/google';
 import cn from 'classnames';
-import 'anityanhub-ui-lib/style.css';
 
 import Header from '@/app/components/_Header/_Header';
 import Footer from '@/app/components/_Footer/_Footer';
 import MainWrapper from '@/app/components/MainWrapper/MainWrapper';
 import MainContentWrapper from '@/app/components/MainContentWrapper/MainContentWrapper';
 
-import './styles/globals.scss';
+import 'anityanhub-ui-lib/style.css';
+import '@/app/styles/globals.scss';
 
 const inter = Inter({ subsets: ['latin'], display: 'swap' });
 
