@@ -25,7 +25,7 @@
 }
 
 .popular-title-image:hover {
-  box-shadow: 0 0 20px 4px palette.$bg-primary-color;
+  box-shadow: 0 0 10px 2px palette.$bg-primary-color;
 }
 
 // Section best new titles
@@ -55,6 +55,12 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
+  color: palette.$typography-primary-color;
+  background-color: palette.$bg-accent-color;
+}
+
+.updates-title-series {
+  padding: 5px;
 }
 
 /*
