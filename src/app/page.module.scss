@@ -1,10 +1,60 @@
+@use './variables.scss' as palette;
+
 .main {
   display: flex;
   flex-direction: column;
+  min-height: 100vh;
+}
+
+// Section popular
+
+.popular {
+  padding: 20px 0;
+  background-color: rgba(palette.$bg-secondary-color, palette.$opacity);
+}
+
+.popular-header {
+  display: flex;
   align-items: center;
   justify-content: space-between;
-  min-height: 100vh;
-  padding: 6rem;
+  padding: 10px 0;
+}
+
+.popular-title-figcap {
+  text-align: center;
+}
+
+.popular-title-image:hover {
+  box-shadow: 0 0 20px 4px palette.$bg-primary-color;
+}
+
+// Section best new titles
+
+.best-new-titles {
+  background-color: palette.$bg-secondary-color;
+}
+
+// Section updates
+
+.updates {
+  padding: 20px 0;
+  background-color: rgba(palette.$bg-light-color, palette.$opacity);
+}
+
+.updates-header {
+  padding: 10px 0;
+}
+
+.updates-content {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+
+.updates-title-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
 
 /*
