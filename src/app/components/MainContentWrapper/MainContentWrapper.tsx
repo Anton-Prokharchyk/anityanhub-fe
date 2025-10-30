@@ -1,6 +1,6 @@
 import React from 'react';
 
-import styles from '@/app/mainContentWrapper.module.scss';
+import styles from './mainContentWrapper.module.scss';
 
 export default function MainContentWrapper({
   children,

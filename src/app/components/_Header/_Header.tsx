@@ -4,9 +4,9 @@ import React, { useState } from 'react';
 import Link from 'next/link';
 import { Button, SearchBar, Typography } from 'anityanhub-ui-lib';
 
-import LoginModal from '@/app/login-modal';
+import LoginModal from '@/app/components/LoginModal/LoginModal';
 import Logo from '@/../public/ath-main-logo.svg';
-import ProfileModal from '@/app/profile-modal';
+import ProfileModal from '@/app/components/ProfileModal/ProfileModal';
 
 import styles from './header.module.scss';
 

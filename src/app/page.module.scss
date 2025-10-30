@@ -1,4 +1,4 @@
-@use './variables.scss' as palette;
+@use './styles/variables.scss' as palette;
 
 .main {
   display: flex;
@@ -31,7 +31,58 @@
 // Section best new titles
 
 .best-new-titles {
+  padding: 20px 0;
   background-color: palette.$bg-secondary-color;
+}
+
+.best-new-titles-content {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 20px;
+}
+
+.best-new-titles-title-wrapper {
+  position: relative;
+}
+
+.best-new-titles-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 0;
+}
+
+.best-new-titles-title-series {
+  position: absolute;
+  top: 0;
+  left: 0;
+  padding: 2px;
+  background-color: palette.$bg-accent-color;
+}
+
+.best-new-titles-title-status {
+  position: absolute;
+  top: 0;
+  left: 82px;
+  padding: 2px;
+  background-color: palette.$typography-error-color;
+}
+
+.best-new-titles-title-rating {
+  position: absolute;
+  top: 110px;
+  left: -2px;
+  padding: 2px;
+  color: palette.$bg-primary-color;
+  background-color: #ffa500;
+}
+
+.best-new-titles-title-name {
+  text-align: center;
+}
+
+.best-new-titles-title-issued {
+  text-align: center;
 }
 
 // Section updates

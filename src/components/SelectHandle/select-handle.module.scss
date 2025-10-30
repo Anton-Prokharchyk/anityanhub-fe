@@ -1,0 +1,8 @@
+@use '@/app/styles/variables.scss' as palette;
+
+.select-handle {
+  padding: 5px 25px;
+  text-align: center;
+  background-color: palette.$bg-accent-color;
+  border-radius: 5px;
+}

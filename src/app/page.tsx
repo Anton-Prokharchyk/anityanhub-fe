@@ -7,6 +7,7 @@ import Image from 'next/image';
 
 import data from '../seed';
 import styles from './page.module.scss';
+import Filter from './components/Filter/Filter';
 
 export default function Main() {
   return (
@@ -46,11 +47,43 @@ export default function Main() {
             <Button appearance='none'>Watch all ...</Button>
           </div>
           <div className={styles['best-new-titles-filter']}>
-            <span>Filter</span>
+            <Filter />
           </div>
 
           <div className={styles['best-new-titles-content']}>
-            <span>Content</span>
+            {data.map((element) => (
+              <div
+                className={styles['best-new-titles-title-item']}
+                key={element.id}
+              >
+                <figure className={styles['best-new-titles-title-wrapper']}>
+                  <Image
+                    alt='title-image'
+                    src={element.img}
+                    width={150}
+                    height={150}
+                    className={styles['best-new-titles-title-image']}
+                  />
+                  <div className={styles['best-new-titles-title-series']}>
+                    2 series
+                  </div>
+                  <div className={styles['best-new-titles-title-status']}>
+                    Ongoing
+                  </div>
+                  <div className={styles['best-new-titles-title-rating']}>
+                    9.0
+                  </div>
+                  <figcaption className={styles['best-new-titles-title-name']}>
+                    <span>{element.name}</span>
+                  </figcaption>
+                  <figcaption
+                    className={styles['best-new-titles-title-issued']}
+                  >
+                    <span>2025</span>
+                  </figcaption>
+                </figure>
+              </div>
+            ))}
           </div>
         </div>
       </section>
