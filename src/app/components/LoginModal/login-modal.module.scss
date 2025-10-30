@@ -1,4 +1,4 @@
-@use './variables' as palette;
+@use '../../styles/variables.scss' as palette;
 
 .login-modal-background {
   position: fixed;

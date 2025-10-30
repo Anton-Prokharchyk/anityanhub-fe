@@ -1,4 +1,3 @@
-version: '2.38.2'
 services:
   ath-frontend:
     container_name: ath-frontend
