@@ -1,0 +1,12 @@
+services:
+  ath-frontend:
+    container_name: ath-frontend
+    build:
+      context: .
+      target: dev
+    restart: always
+    ports:
+      - 3002:3000
+    volumes:
+      - ./:/ath-frontend
+      - /ath-frontend/node_modules
