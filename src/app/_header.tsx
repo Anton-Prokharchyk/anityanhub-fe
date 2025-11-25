@@ -4,9 +4,9 @@ import React, { useState } from 'react';
 import Link from 'next/link';
 import { Button, SearchBar, Typography } from 'anityanhub-ui-lib';
 
-import LoginModal from '@/app/components/LoginModal/LoginModal';
+import LoginModal from '@/app/(components)/LoginModal/LoginModal';
 import Logo from '@/../public/ath-main-logo.svg';
-import ProfileModal from '@/app/components/ProfileModal/ProfileModal';
+import ProfileModal from '@/app/(components)/ProfileModal/ProfileModal';
 
 import styles from './header.module.scss';
 
@@ -15,7 +15,7 @@ export default function Header() {
 
   const [isProfileModalOpen, setIsProfileModalOpen] = useState<boolean>(false);
   const [isLoginModalOpen, setIsLoginModalOpen] = useState<boolean>(false);
-
+  console.log('isLoginModalOpen', isLoginModalOpen);
   return (
     <header className={styles['header-wrapper']}>
       <div className={styles['top-header']}>
@@ -58,7 +58,7 @@ export default function Header() {
             ) : (
               <div className={styles.login}>
                 <Button appearance='none' style={{ padding: '0' }}>
-                  <Link href='https://google.com'>SIGN UP</Link>
+                  <Link href='$'>SIGN UP</Link>
                 </Button>
                 /
                 <Button

@@ -1,22 +1,18 @@
 'use client';
 
-import React, { Dispatch, SetStateAction, useCallback } from 'react';
-import { Controller, useForm } from 'react-hook-form';
-import Link from 'next/link';
+import { Dispatch, SetStateAction } from 'react';
+import { Controller, SubmitHandler, useForm } from 'react-hook-form';
+import { yupResolver } from '@hookform/resolvers/yup';
 import * as y from 'yup';
 import { Button, ErrorMessage, Input, Typography } from 'anityanhub-ui-lib';
 
-import { yupResolver } from '@hookform/resolvers/yup';
+import { login, LoginInput } from '@/app/api/user.api';
+
 import styles from './login-modal.module.scss';
 
 interface LoginModalProps {
   setIsLoginModalOpen: Dispatch<SetStateAction<boolean>>;
 }
-
-type Inputs = {
-  login: string;
-  password: string;
-};
 
 const validationSchema = y.object({
   login: y
@@ -38,23 +34,28 @@ export default function LoginModal({ setIsLoginModalOpen }: LoginModalProps) {
     handleSubmit,
     control,
     formState: { errors },
-  } = useForm<Inputs>({ resolver: yupResolver(validationSchema), mode: 'all' });
+  } = useForm<LoginInput>({
+    resolver: yupResolver(validationSchema),
+    mode: 'all',
+  });
 
-  const onSubmit = useCallback(
-    handleSubmit((data: Inputs) => console.log(data)),
-    []
-  );
-  const onBackgroundClick = useCallback(
-    (): void => setIsLoginModalOpen(false),
-    [setIsLoginModalOpen]
-  );
+  const onSubmit: SubmitHandler<LoginInput> = async (data) => {
+    const { isLoggedIn } = await login(data);
+    setIsLoginModalOpen(!isLoggedIn);
+  };
+
+  const onError = () => {
+    console.log('error');
+  };
+
+  const onBackgroundClick = (): void => setIsLoginModalOpen(false);
+
   return (
     <div
       onClick={() => onBackgroundClick()}
       className={styles['login-modal-background']}
     >
-      {/* eslint-disable-next-line @typescript-eslint/no-misused-promises */}
-      <form onSubmit={onSubmit}>
+      <form onSubmit={handleSubmit(onSubmit, onError)}>
         <div
           onClick={(e) => e.stopPropagation()}
           className={styles['login-modal-container']}
@@ -112,9 +113,7 @@ export default function LoginModal({ setIsLoginModalOpen }: LoginModalProps) {
           >
             Sign In
           </Button>
-          <Button appearance='none'>
-            <Link href='https://www.google.com'>Sign Up</Link>
-          </Button>
+          <Button appearance='none'>Sign Up</Button>
         </div>
       </form>
     </div>
