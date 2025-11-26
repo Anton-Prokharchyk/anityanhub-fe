@@ -5,6 +5,8 @@ import { Button, ErrorMessage, Input } from 'anityanhub-ui-lib';
 import React from 'react';
 import { Controller, useForm } from 'react-hook-form';
 import * as y from 'yup';
+import { useRouter } from 'next/navigation';
+
 import { registration, RegistrationInput } from '../api/user.api';
 
 const validationSchema = y.object({
@@ -23,6 +25,8 @@ const validationSchema = y.object({
 });
 
 export default function Registration() {
+  const router = useRouter();
+
   const {
     handleSubmit,
     control,
@@ -31,10 +35,19 @@ export default function Registration() {
     resolver: yupResolver(validationSchema),
   });
 
-  const onSubmit = async (data: RegistrationInput) => {
-    console.log('submit', data);
-    console.log('submit', errors);
-    await registration(data);
+  const onSubmit = async (data: RegistrationInput): Promise<void> => {
+    try {
+      const user = await registration(data);
+      console.log('user', user);
+      if (user) {
+        console.log('set user');
+        router.replace('/');
+        return;
+      }
+      console.log('couldnt register');
+    } catch (e) {
+      console.log('couldnt register');
+    }
   };
 
   return (
