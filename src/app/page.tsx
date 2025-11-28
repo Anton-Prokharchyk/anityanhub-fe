@@ -1,15 +1,34 @@
 'use client';
 
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Slider, Button } from 'anityanhub-ui-lib';
 import cn from 'classnames';
 import Image from 'next/image';
 
 import data from '../seed';
 import styles from './page.module.scss';
-import Filter from './components/Filter/Filter';
+import Filter from './(components)/Filter/Filter';
+import { getUsers } from './api/user.api';
 
 export default function Main() {
+  const [users, setUsers] = useState<unknown>();
+  const fetchUsers = async () => {
+    try {
+      const data1 = await getUsers();
+      setUsers(data1);
+    } catch (e) {
+      throw new Error();
+    }
+  };
+  useEffect(() => {
+    fetchUsers()
+      .then((d) => d)
+      .catch(() => {
+        throw new Error();
+      });
+  }, []);
+  console.log(users);
+
   return (
     <main className={styles.main}>
       <section className={cn(styles.popular)}>

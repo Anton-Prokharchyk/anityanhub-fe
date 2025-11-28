@@ -3,10 +3,11 @@ import type { Metadata } from 'next';
 import { Inter } from 'next/font/google';
 import cn from 'classnames';
 
-import Header from '@/app/components/_Header/_Header';
-import Footer from '@/app/components/_Footer/_Footer';
-import MainWrapper from '@/app/components/MainWrapper/MainWrapper';
-import MainContentWrapper from '@/app/components/MainContentWrapper/MainContentWrapper';
+import Header from '@/app/(components)/_Header/_Header';
+import Footer from '@/app/(components)/_Footer/_Footer';
+import MainWrapper from '@/app/(components)/MainWrapper/MainWrapper';
+import MainContentWrapper from '@/app/(components)/MainContentWrapper/MainContentWrapper';
+import UserProvider from './UserContext';
 
 import 'anityanhub-ui-lib/style.css';
 import '@/app/styles/globals.scss';
@@ -29,13 +30,15 @@ export default function RootLayout({
   return (
     <html lang='en' className={inter.className}>
       <body>
-        <MainWrapper>
-          <MainContentWrapper>
-            <Header />
-            <main className={cn('main-content')}>{children}</main>
-            <Footer />
-          </MainContentWrapper>
-        </MainWrapper>
+        <UserProvider>
+          <MainWrapper>
+            <MainContentWrapper>
+              <Header />
+              <main className={cn('main-content')}>{children}</main>
+              <Footer />
+            </MainContentWrapper>
+          </MainWrapper>
+        </UserProvider>
       </body>
     </html>
   );
