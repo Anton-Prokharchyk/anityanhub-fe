@@ -1,12 +1,13 @@
 'use client';
 
-import { Dispatch, SetStateAction } from 'react';
+import { Dispatch, SetStateAction, useContext } from 'react';
 import { Controller, SubmitHandler, useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as y from 'yup';
 import { Button, ErrorMessage, Input, Typography } from 'anityanhub-ui-lib';
 
 import { login, LoginInput } from '@/app/api/user.api';
+import { UserContext } from '@/app/UserContext';
 
 import styles from './login-modal.module.scss';
 
@@ -39,8 +40,11 @@ export default function LoginModal({ setIsLoginModalOpen }: LoginModalProps) {
     mode: 'all',
   });
 
+  const { changeCurrentUser } = useContext(UserContext);
+
   const onSubmit: SubmitHandler<LoginInput> = async (data) => {
     const { isLoggedIn } = await login(data);
+    if (isLoggedIn) changeCurrentUser({ id: 'string', name: 'name' });
     setIsLoginModalOpen(!isLoggedIn);
   };
 

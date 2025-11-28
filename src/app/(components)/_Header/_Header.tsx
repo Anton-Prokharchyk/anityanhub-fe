@@ -1,17 +1,18 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import Link from 'next/link';
 import { Button, SearchBar, Typography } from 'anityanhub-ui-lib';
 
 import LoginModal from '@/app/(components)/LoginModal/LoginModal';
 import Logo from '@/../public/ath-main-logo.svg';
 import ProfileModal from '@/app/(components)/ProfileModal/ProfileModal';
+import { UserContext } from '@/app/UserContext';
 
 import styles from './header.module.scss';
 
 export default function Header() {
-  const [isLoggedIn, setIsLoggedIn] = useState<boolean>(false);
+  const userContextData = useContext(UserContext);
 
   const [isProfileModalOpen, setIsProfileModalOpen] = useState<boolean>(false);
   const [isLoginModalOpen, setIsLoginModalOpen] = useState<boolean>(false);
@@ -28,11 +29,8 @@ export default function Header() {
           />
         </div>
         <div className={styles['right-header']}>
-          <div
-            className={styles['login-container']}
-            onClick={() => setIsLoggedIn(!isLoggedIn)}
-          >
-            {isLoggedIn ? (
+          <div className={styles['login-container']}>
+            {userContextData?.currentUser ? (
               <div
                 className={styles.profile}
                 style={{ cursor: 'pointer' }}
@@ -58,7 +56,7 @@ export default function Header() {
             ) : (
               <div className={styles.login}>
                 <Button appearance='none' style={{ padding: '0' }}>
-                  <Link href='https://google.com'>SIGN UP</Link>
+                  <Link href='/registration'>SIGN UP</Link>
                 </Button>
                 /
                 <Button
@@ -70,7 +68,9 @@ export default function Header() {
                 </Button>
               </div>
             )}
-            {isProfileModalOpen && <ProfileModal />}
+            {isProfileModalOpen && (
+              <ProfileModal setIsProfileModalOpen={setIsProfileModalOpen} />
+            )}
           </div>
         </div>
         {isLoginModalOpen && (

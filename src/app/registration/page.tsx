@@ -2,12 +2,13 @@
 
 import { yupResolver } from '@hookform/resolvers/yup';
 import { Button, ErrorMessage, Input } from 'anityanhub-ui-lib';
-import React from 'react';
+import React, { useContext } from 'react';
 import { Controller, useForm } from 'react-hook-form';
 import * as y from 'yup';
 import { useRouter } from 'next/navigation';
 
 import { registration, RegistrationInput } from '../api/user.api';
+import { UserContext } from '../UserContext';
 
 const validationSchema = y.object({
   name: y
@@ -26,6 +27,7 @@ const validationSchema = y.object({
 
 export default function Registration() {
   const router = useRouter();
+  const { currentUser, changeCurrentUser } = useContext(UserContext);
 
   const {
     handleSubmit,
@@ -39,8 +41,9 @@ export default function Registration() {
     try {
       const user = await registration(data);
       console.log('user', user);
-      if (user) {
+      if (user && !currentUser) {
         console.log('set user');
+        changeCurrentUser(user);
         router.replace('/');
         return;
       }
