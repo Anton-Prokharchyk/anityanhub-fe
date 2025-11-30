@@ -80,11 +80,21 @@ export default function Header() {
       <div className={styles['bot-header']}>
         <nav className={styles['navigation-container']}>
           <ul className={styles['navigation-list']}>
-            <li className={styles['navigation-list-item']}>Home</li>
-            <li className={styles['navigation-list-item']}>Genre</li>
-            <li className={styles['navigation-list-item']}>Rooms</li>
-            <li className={styles['navigation-list-item']}>Manga</li>
-            <li className={styles['navigation-list-item']}>Ongoing</li>
+            <li className={styles['navigation-list-item']}>
+              <Link href='/'>Home</Link>
+            </li>
+            <li className={styles['navigation-list-item']}>
+              <Link href='/genre'>Genre</Link>
+            </li>
+            <li className={styles['navigation-list-item']}>
+              <Link href='/rooms'>Rooms</Link>
+            </li>
+            <li className={styles['navigation-list-item']}>
+              <Link href='/manga'>Manga</Link>
+            </li>
+            <li className={styles['navigation-list-item']}>
+              <Link href='/ongoing'>Ongoing</Link>
+            </li>
           </ul>
         </nav>
       </div>
