@@ -1,11 +1,17 @@
 'use client';
 
-import React from 'react';
+import React, { useContext } from 'react';
 import { Typography } from 'anityanhub-ui-lib';
+import { UserContext } from '@/app/UserContext';
 
 import styles from './profile-modal.module.scss';
 
-export default function ProfileModal() {
+export default function ProfileModal({
+  setIsProfileModalOpen,
+}: {
+  setIsProfileModalOpen: (isProfileModalOpen: boolean) => void;
+}) {
+  const { changeCurrentUser } = useContext(UserContext);
   return (
     <div className={styles['modal-container']}>
       <div className={styles['profile-info']}>
@@ -25,7 +31,15 @@ export default function ProfileModal() {
       </div>
       <div className={styles.actions}>
         <div className={styles.help}>Help</div>
-        <div className={styles['sign-out']}>Sign out</div>
+        <div
+          className={styles['sign-out']}
+          onClick={() => {
+            changeCurrentUser(null);
+            setIsProfileModalOpen(false);
+          }}
+        >
+          Sign out
+        </div>
       </div>
     </div>
   );

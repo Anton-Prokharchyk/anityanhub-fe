@@ -1,0 +1,17 @@
+@use '@/app/styles/variables.scss' as palette;
+
+.select-option {
+  align-items: center;
+  height: 35px;
+  padding: 5px 5px 5px 25px;
+  cursor: pointer;
+  background-color: #008000;
+}
+
+.select-option:hover {
+  background-color: #000;
+}
+
+.selected {
+  background-color: palette.$bg-accent-color;
+}
